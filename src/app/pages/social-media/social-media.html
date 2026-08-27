@@ -1,0 +1,126 @@
+<section class="social-media-section">
+
+  <div class="sm-ambient-glow"></div>
+  <div class="sm-ghost-text" aria-hidden="true">SOCIAL</div>
+
+  <div class="sm-particles" *ngIf="!prefersReducedMotion">
+    <span *ngFor="let i of [1,2,3,4,5,6,7,8]"></span>
+  </div>
+
+  <div class="sm-header">
+    <span class="sm-eyebrow">SOCIAL PRESENCE</span>
+    <h2 class="sm-heading">THE JOURNEY CONTINUES</h2>
+    <p class="sm-subtitle">
+      The story does not end within these pages.<br>
+      It continues every day through education, service, people, moments and memories
+      shared with the world.
+    </p>
+  </div>
+
+  <div class="sm-cards-grid">
+
+    <!-- ============ FACEBOOK CARD ============ -->
+    <article class="sm-card" aria-labelledby="fb-card-title">
+
+      <header class="sm-card-header">
+        <div class="sm-profile">
+          <div class="sm-avatar-wrap">
+            <img class="sm-avatar-photo" src="assets/images/Socialmediafb.png"
+                 alt="Achyuta Samanta" (error)="$any($event.target).style.display='none'">
+            <span class="sm-platform-badge fb-badge">f</span>
+          </div>
+          <div class="sm-profile-text">
+            <span class="sm-platform-label">{{ facebook.name }}</span>
+            <span class="sm-profile-name" id="fb-card-title">{{ facebook.username }}</span>
+            <span class="sm-profile-sub">{{ facebook.description }}</span>
+          </div>
+        </div>
+        <div class="sm-status">
+          <span class="sm-status-dot"></span>
+          <span>LATEST</span>
+        </div>
+      </header>
+
+      <div class="sm-feed-area">
+
+        <iframe
+          *ngIf="facebookEmbedUrl && !facebookEmbedFailed()"
+          [src]="facebookEmbedUrl"
+          class="sm-embed-iframe"
+          title="Official Facebook feed for Achyuta Samanta"
+          loading="lazy"
+          scrolling="no"
+          frameborder="0"
+          allow="encrypted-media"
+          (error)="onFacebookEmbedError()">
+        </iframe>
+
+        <div class="sm-fallback" *ngIf="!facebookEmbedUrl || facebookEmbedFailed()">
+          <img class="sm-fallback-photo" src="assets/images/Socialmediafb.png"
+               alt="Achyuta Samanta" (error)="$any($event.target).style.display='none'">
+          <p>Visit the official page to see the latest updates.</p>
+        </div>
+
+      </div>
+
+      <a class="sm-view-btn"
+         [href]="facebook.url"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="View official Facebook page of Achyuta Samanta">
+        VIEW FACEBOOK PAGE →
+      </a>
+
+    </article>
+
+    <!-- ============ INSTAGRAM CARD ============ -->
+    <article class="sm-card" aria-labelledby="ig-card-title">
+
+      <header class="sm-card-header">
+        <div class="sm-profile">
+          <div class="sm-avatar-wrap">
+            <img class="sm-avatar-photo" src="assets/images/socialmediainsta.jpeg"
+                 alt="Achyuta Samanta" (error)="$any($event.target).style.display='none'">
+            <span class="sm-platform-badge ig-badge">◎</span>
+          </div>
+          <div class="sm-profile-text">
+            <span class="sm-platform-label">{{ instagram.name }}</span>
+            <span class="sm-profile-name" id="ig-card-title">{{ instagram.username }}</span>
+            <span class="sm-profile-sub">{{ instagram.description }}</span>
+          </div>
+        </div>
+        <div class="sm-status">
+          <span class="sm-status-dot"></span>
+          <span>LATEST</span>
+        </div>
+      </header>
+
+      <div class="sm-feed-area">
+        <div class="sm-fallback" *ngIf="!instagramEmbedAvailable()">
+          <img class="sm-fallback-photo" src="assets/images/socialmediainsta.jpeg"
+               alt="Achyuta Samanta" (error)="$any($event.target).style.display='none'">
+          <p>Visit the official page to see the latest updates.</p>
+        </div>
+        <!-- When a real Instagram Graph API embed is connected later,
+             render it here in place of .sm-fallback -->
+      </div>
+
+      <a class="sm-view-btn"
+         [href]="instagram.url"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="View official Instagram profile of Achyuta Samanta">
+        VIEW INSTAGRAM →
+      </a>
+
+    </article>
+
+  </div>
+
+  <div class="sm-footer">
+    <span class="sm-footer-line"></span>
+    <span class="sm-footer-text">FOLLOW THE JOURNEY</span>
+    <span class="sm-footer-line"></span>
+  </div>
+
+</section>

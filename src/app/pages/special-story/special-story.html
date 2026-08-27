@@ -1,0 +1,86 @@
+<section class="witnesses">
+
+  <div class="ambient-glow"></div>
+
+  <div class="particles">
+    <span *ngFor="let p of particles"
+          [style.left.%]="p.left"
+          [style.animationDelay.s]="p.delay"
+          [style.animationDuration.s]="p.duration"></span>
+  </div>
+
+  <div class="header">
+    <span class="eyebrow">A Museum of Memory</span>
+    <h2>THE SILENT WITNESSES</h2>
+    <p class="subtitle">
+      Some objects are ordinary.<br>
+      Some become history because of the hands that carried them.
+    </p>
+  </div>
+
+  <div class="cards-row">
+
+    <div class="witness-card"
+         *ngFor="let obj of objects; let i = index"
+         #cardEl
+         [style.--delay.s]="i * 0.15"
+         (mousemove)="onCardMouseMove($event, cardEl)"
+         (mouseleave)="onCardMouseLeave(cardEl)"
+         (click)="openStory(obj)">
+
+      <div class="card-glow"></div>
+
+      <div class="object-float">
+        <img [src]="obj.image" [alt]="obj.title"
+             (error)="$any($event.target).style.display='none'">
+      </div>
+
+      <h3>{{ obj.title }}</h3>
+      <p>{{ obj.subtitle }}</p>
+
+      <span class="explore">Explore the Story →</span>
+
+    </div>
+
+  </div>
+
+  <!-- STORY OVERLAY -->
+  <div class="story-overlay" *ngIf="activeObject() as obj">
+
+    <div class="overlay-bg" (click)="closeStory()"></div>
+
+    <div class="diary">
+
+      <button class="close-btn" (click)="closeStory()">✕</button>
+
+      <div class="diary-border"></div>
+
+      <div class="diary-grid">
+        <div class="diary-left">
+          <img class="object-hero" [src]="obj.image" [alt]="obj.title">
+        </div>
+        <div class="diary-right">
+          <img class="historic-photo"
+               [src]="obj.storyPhoto"
+               [alt]="obj.title + ' historic photo'"
+               (error)="$any($event.target).style.display='none'">
+        </div>
+      </div>
+
+      <div class="diary-text">
+        <h3>{{ obj.title }}</h3>
+
+        <p *ngFor="let para of obj.storyParagraphs">{{ para }}</p>
+
+        <p class="handwritten">{{ obj.handwrittenLine }}</p>
+
+        <blockquote class="closing-quote">“{{ obj.closingQuote }}”</blockquote>
+      </div>
+
+      <div class="wax-seal"></div>
+
+    </div>
+
+  </div>
+
+</section>

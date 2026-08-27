@@ -1,0 +1,56 @@
+<header class="navbar" [class.nav-hidden]="isHidden">
+
+  <a routerLink="/" (click)="closeMenu()" class="logo">
+    <span class="top">THE LEGEND</span>
+    <span class="bottom">ACHYUTA SAMANTA</span>
+  </a>
+
+  <nav class="desktop-nav">
+    <a href="/#hero" (click)="scrollToSection('hero', $event)">Home</a>
+    <a href="/#about" (click)="scrollToSection('about', $event)">About</a>
+    <a href="/#journey" (click)="scrollToSection('journey', $event)">Journey</a>
+    <a href="/#special-story" (click)="scrollToSection('special-story', $event)">Special Story</a>
+    <a href="/#institutions" (click)="scrollToSection('institutions', $event)">Institutions</a>
+    <a href="/#global-impact" (click)="scrollToSection('global-impact', $event)">Global Impact</a>
+    <a href="/#achievements" (click)="scrollToSection('achievements', $event)">Awards</a>
+    <a href="/#spiritual" (click)="scrollToSection('spiritual', $event)">Spiritual</a>
+    <a href="/#social-media" (click)="scrollToSection('social-media', $event)">Contact</a>
+  </nav>
+
+  <a class="cta desktop-cta"
+     href="https://achyutasamanta.com/contact/"
+     target="_blank"
+     rel="noopener noreferrer">
+    Support Mission
+  </a>
+
+  <!-- Hamburger Button (mobile only) -->
+  <button class="hamburger" [class.active]="isMenuOpen" (click)="toggleMenu()" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" [class.open]="isMenuOpen">
+  <nav class="mobile-nav">
+    <a href="/#hero" (click)="scrollToSection('hero', $event)">Home</a>
+    <a href="/#about" (click)="scrollToSection('about', $event)">About</a>
+    <a href="/#journey" (click)="scrollToSection('journey', $event)">Journey</a>
+    <a href="/#special-story" (click)="scrollToSection('special-story', $event)">Special Story</a>
+    <a href="/#institutions" (click)="scrollToSection('institutions', $event)">Institutions</a>
+    <a href="/#global-impact" (click)="scrollToSection('global-impact', $event)">Global Impact</a>
+    <a href="/#achievements" (click)="scrollToSection('achievements', $event)">Awards</a>
+    <a href="/#spiritual" (click)="scrollToSection('spiritual', $event)">Spiritual</a>
+    <a href="/#social-media" (click)="scrollToSection('social-media', $event)">Contact</a>
+  </nav>
+  <a class="cta"
+     href="https://achyutasamanta.com/contact/"
+     target="_blank"
+     rel="noopener noreferrer"
+     (click)="closeMenu()">
+    Support Mission
+  </a>
+</div>

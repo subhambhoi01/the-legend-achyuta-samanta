@@ -1,0 +1,136 @@
+<section class="institutions-section">
+
+  <div class="ambient-glow"></div>
+
+  <div class="particles">
+    <span *ngFor="let p of particles"
+          [style.left.%]="p.left"
+          [style.animationDelay.s]="p.delay"
+          [style.animationDuration.s]="p.duration"></span>
+  </div>
+
+  <div class="header">
+    <span class="eyebrow">The Ecosystem</span>
+    <h2>A LEGACY THAT<br>CHANGED MILLIONS</h2>
+    <p class="subtitle">
+      One Vision became Institutions.<br>
+      Those Institutions became Hope.<br>
+      That Hope transformed Millions of Lives.
+    </p>
+  </div>
+
+  <!-- ============ DESKTOP ECOSYSTEM (compass layout) ============ -->
+  <div class="ecosystem">
+
+    <svg class="energy-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line class="energy-line" x1="50" y1="50" x2="50" y2="10"></line>
+      <line class="energy-line" x1="50" y1="50" x2="90" y2="50"></line>
+      <line class="energy-line" x1="50" y1="50" x2="50" y2="90"></line>
+      <line class="energy-line" x1="50" y1="50" x2="10" y2="50"></line>
+    </svg>
+
+    <!-- CENTRAL HUB -->
+    <div class="hub-node">
+      <div class="hub-glow"></div>
+      <span class="hub-year">1992</span>
+      <span class="hub-amount">₹5000</span>
+      <span class="hub-label">One Dream</span>
+    </div>
+
+    <!-- NODES -->
+    <div class="inst-node pos-top"
+         *ngFor="let node of nodes; let i = index"
+         #nodeEl
+         [class.pos-top]="node.key === 'kiit'"
+         [class.pos-right]="node.key === 'kiss'"
+         [class.pos-bottom]="node.key === 'kims'"
+         [class.pos-left]="node.key === 'giving'"
+         [style.--accent]="node.accent"
+         (mousemove)="onNodeMouseMove($event, nodeEl)"
+         (click)="openNode(node)">
+
+      <div class="node-glow"></div>
+
+      <div class="node-logo">
+        <img [src]="node.logo" [alt]="node.name"
+             (error)="$any($event.target).style.display='none'">
+        <span class="node-icon-fallback">{{ node.icon }}</span>
+      </div>
+
+      <h3>{{ node.name }}</h3>
+      <p>{{ node.tagline }}</p>
+
+      <span class="explore">Explore →</span>
+
+    </div>
+
+  </div>
+
+  <!-- ============ MOBILE VERTICAL STACK ============ -->
+<div class="mobile-stack">
+  <div class="hub-node-mobile">
+    <span class="hub-year">1992</span>
+    <span class="hub-amount">₹5000</span>
+    <span class="hub-label">One Dream</span>
+  </div>
+
+  <div class="stack-line"></div>
+
+  <div class="inst-node-mobile"
+       *ngFor="let node of nodes"
+       [style.--accent]="node.accent"
+       (click)="openNode(node)">
+    <div class="node-logo">
+      <img [src]="node.logo" [alt]="node.name"
+           (error)="$any($event.target).style.display='none'">
+      <span class="node-icon-fallback">{{ node.icon }}</span>
+    </div>
+    <h3>{{ node.name }}</h3>
+    <p>{{ node.tagline }}</p>
+    <span class="explore">Explore →</span>
+  </div>
+</div>
+
+  <!-- ============ FULLSCREEN INSTITUTION STORY ============ -->
+  <div class="institution-overlay" *ngIf="activeNode() as node">
+
+    <div class="institution-bg"
+         [style.background-image]="'url(' + node.heroImage + ')'"
+         (click)="closeNode()"></div>
+
+    <div class="institution-panel" [style.--accent]="node.accent">
+
+      <button class="close-btn" (click)="closeNode()">✕</button>
+
+      <div class="panel-header">
+        <div class="panel-logo">
+          <img [src]="node.logo" [alt]="node.name"
+               (error)="$any($event.target).style.display='none'">
+          <span class="node-icon-fallback">{{ node.icon }}</span>
+        </div>
+        <h2>{{ node.name }}</h2>
+        <p class="panel-tagline">{{ node.tagline }}</p>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat" *ngFor="let stat of node.stats">
+          <span class="stat-value" [attr.data-target]="stat.value">0</span><span class="stat-suffix">{{ stat.suffix }}</span>
+          <span class="stat-label">{{ stat.label }}</span>
+        </div>
+      </div>
+
+      <div class="panel-photo">
+        <img [src]="node.heroImage" [alt]="node.name"
+             (error)="$any($event.target).style.display='none'">
+      </div>
+
+      <div class="panel-text">
+        <p *ngFor="let para of node.storyParagraphs">{{ para }}</p>
+        <blockquote>“{{ node.closingLine }}”</blockquote>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

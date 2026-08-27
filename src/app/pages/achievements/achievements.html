@@ -1,0 +1,134 @@
+<section class="hall-root">
+
+  <!-- ============ OPENING ============ -->
+  <div class="hall-intro">
+    <div class="intro-particles">
+      <span *ngFor="let p of particles"
+            [style.left.%]="p.left"
+            [style.animationDelay.s]="p.delay"
+            [style.animationDuration.s]="p.duration"></span>
+    </div>
+    <p class="opening-text">Recognition Was Never The Destination…</p>
+    <span class="eyebrow">The Hall of Honours</span>
+    <p class="subtitle">Recognition Was Never The Goal.<br>Service Was.</p>
+  </div>
+
+  <!-- ============ DOOR SCENE ============ -->
+  <div class="door-scene">
+    <span class="door-scene-label">Scroll to Enter</span>
+
+    <div class="door-frame">
+
+      <div class="door-outer-frame">
+        <div class="frame-corner tl"></div>
+        <div class="frame-corner tr"></div>
+        <div class="frame-corner bl"></div>
+        <div class="frame-corner br"></div>
+      </div>
+  <div class="door-plaque">
+  <span class="plaque-line1">A MUSEUM DEDICATED TO</span>
+  <span class="plaque-line2">DR. ACHYUTA SAMANTA</span>
+  <span class="plaque-line3">A Lifetime in Honours</span>
+</div>
+      <div class="door-panels">
+        <div class="door-left">
+          <div class="door-weather"></div>
+          <div class="door-carving"></div>
+          <div class="door-hinge top"></div>
+          <div class="door-hinge bottom"></div>
+          <div class="door-ring right"></div>
+        </div>
+        <div class="door-right">
+          <div class="door-weather"></div>
+          <div class="door-carving"></div>
+          <div class="door-hinge top"></div>
+          <div class="door-hinge bottom"></div>
+          <div class="door-ring left"></div>
+        </div>
+      </div>
+
+      <div class="door-light"></div>
+    </div>
+  </div>
+
+  <!-- ============ MUSEUM HALL ============ -->
+  <div class="museum-hall">
+
+    <button class="exit-btn" *ngIf="inHall()" (click)="exitMuseum()">
+      <span>✕</span> Exit Museum
+    </button>
+
+    <div class="hall-ambient"></div>
+
+    <div class="hall-header">
+      <span class="eyebrow">Step Inside</span>
+      <h2>A LIFETIME OF RECOGNITION</h2>
+      <p class="hall-subtitle">Four halls. One purpose — a life spent in service.</p>
+    </div>
+
+    <div class="frames-grid">
+      <div class="honour-frame"
+           *ngFor="let cat of categories"
+           [style.--accent]="cat.accent"
+           (click)="openCategory(cat)">
+
+        <div class="frame-border">
+          <div class="frame-corner tl"></div>
+          <div class="frame-corner tr"></div>
+          <div class="frame-corner bl"></div>
+          <div class="frame-corner br"></div>
+        </div>
+
+        <div class="frame-glow"></div>
+
+        <span class="frame-icon">{{ cat.icon }}</span>
+        <h3>{{ cat.title }}</h3>
+        <span class="frame-count">{{ cat.countLabel }}</span>
+        <span class="frame-cta">Enter the Room →</span>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ FULLSCREEN CATEGORY PANEL ============ -->
+  <div class="honour-overlay" *ngIf="activeCategory() as cat">
+
+    <div class="honour-bg"
+         [style.background-image]="'url(' + cat.image + ')'"
+         (click)="closeCategory()"></div>
+
+    <div class="honour-panel" [style.--accent]="cat.accent">
+
+      <button class="close-btn" (click)="closeCategory()">✕</button>
+
+      <div class="panel-header">
+        <span class="panel-icon">{{ cat.icon }}</span>
+        <h2>{{ cat.title }}</h2>
+        <span class="panel-count">{{ cat.countLabel }}</span>
+        <p class="panel-intro">{{ cat.intro }}</p>
+      </div>
+
+      <div class="honour-list">
+        <div class="honour-item" *ngFor="let item of cat.items">
+          <span class="item-dot"></span>
+          <div class="item-body">
+            <h4>{{ item.name }}</h4>
+            <span class="item-meta">{{ item.meta }}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ============ GRAND FINALE ============ -->
+  <div class="honours-finale">
+    <div class="finale-msg">
+      <p class="line">"The Greatest Honour Was Never A Medal…"</p>
+      <p class="line accent">"It Was Every Life That Was Transformed."</p>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,2700 @@
+:host {
+  display: block;
+}
+
+/* ===========================================
+   HERO
+=========================================== */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #050505;
+  color: #fff;
+  display: flex;
+  align-items: center;
+   padding-top:0;
+}
+
+/* ===========================================
+   BACKGROUND
+=========================================== */
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+
+  background:
+      radial-gradient(circle at 75% 35%,
+      rgba(201,162,39,.22),
+      transparent 30%),
+
+      radial-gradient(circle at 25% 80%,
+      rgba(255,255,255,.05),
+      transparent 35%),
+
+      linear-gradient(
+      180deg,
+      #080808,
+      #040404,
+      #000000);
+
+  z-index: 0;
+}
+
+/* ===========================================
+   NOISE
+=========================================== */
+
+.hero-noise{
+
+position:absolute;
+
+inset:0;
+
+opacity:.035;
+
+background-image:
+radial-gradient(#ffffff 1px,transparent 1px);
+
+background-size:5px 5px;
+
+mix-blend-mode:overlay;
+
+z-index:1;
+
+}
+
+/* ===========================================
+   GLOW
+=========================================== */
+
+.hero-glow{
+
+position:absolute;
+
+width:650px;
+
+height:650px;
+
+border-radius:50%;
+
+filter:blur(130px);
+
+opacity:.35;
+
+pointer-events:none;
+
+}
+
+.hero-glow.left{
+
+top:-150px;
+
+left:-150px;
+
+background:#c9a227;
+
+}
+
+.hero-glow.right{
+
+bottom:-180px;
+
+right:-100px;
+
+background:#c9a227;
+
+}
+
+/* ===========================================
+   CONTAINER
+=========================================== */
+
+.container{
+
+position:relative;
+
+z-index:2;
+
+width:min(1500px,92%);
+
+margin:auto;
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+align-items:center;
+
+gap:80px;
+
+}
+
+/* ===========================================
+   LEFT
+=========================================== */
+
+.hero-left{
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+/* ===========================================
+   SMALL TITLE
+=========================================== */
+
+.eyebrow{
+
+display:inline-flex;
+
+width:max-content;
+
+padding:8px 18px;
+
+border-radius:999px;
+
+border:1px solid rgba(255,255,255,.08);
+
+background:rgba(255,255,255,.03);
+
+backdrop-filter:blur(12px);
+
+font-size:13px;
+
+letter-spacing:4px;
+
+font-weight:700;
+
+color:#c9a227;
+
+margin-bottom:30px;
+
+}
+
+/* ===========================================
+   HEADING
+=========================================== */
+
+h1{
+
+display:flex;
+
+flex-direction:column;
+
+line-height:.92;
+
+margin:0;
+
+}
+
+.line{
+
+font-family:"Playfair Display",serif;
+
+font-size:8rem;
+
+font-weight:700;
+
+letter-spacing:-4px;
+
+}
+.line.white{
+  position:relative;
+  display:inline-block;
+}
+
+.last-letter{
+  position:relative;
+  display:inline-block;
+}
+
+.crown-icon {
+  position: absolute;
+  width: 100px;
+  height: auto;
+  top: -42px;
+  left: 74%;
+  transform: translateX(-50%) rotate(8deg);
+  z-index: 20;
+  pointer-events: none;
+
+  filter:
+    drop-shadow(0 4px 8px rgba(212,175,55,.55))
+    drop-shadow(0 0 20px rgba(212,175,55,.28));
+
+  animation: crownFloat 3s ease-in-out infinite;
+}
+@keyframes crownFloat{
+  0%, 100%{ transform:translateX(-50%) rotate(18deg) translateY(0); }
+  50%{ transform:translateX(-50%) rotate(18deg) translateY(-5px); }
+}
+
+@media (max-width:1300px){
+  .crown-icon{ width:38px; height:38px; top:-30px; }
+}
+
+@media (max-width:768px){
+  .crown-icon{ width:24px; height:24px; top:-20px; }
+}
+
+@media (max-width:420px){
+  .crown-icon{ width:18px; height:18px; top:-15px; }
+}
+.white{
+
+color:white;
+
+}
+
+.gold{
+
+color:#c9a227;
+
+}
+
+/* ===========================================
+   SUBTITLE
+=========================================== */
+
+.subtitle{
+
+margin-top:28px;
+
+font-size:24px;
+
+font-weight:500;
+
+opacity:.92;
+
+}
+
+/* ===========================================
+   DESCRIPTION
+=========================================== */
+
+.description{
+
+margin-top:22px;
+
+max-width:620px;
+
+font-size:18px;
+
+line-height:1.8;
+
+color:#b8b8b8;
+
+}
+
+/* ===========================================
+   BUTTONS
+=========================================== */
+
+.buttons{
+
+display:flex;
+
+gap:18px;
+
+margin-top:45px;
+
+}
+
+button{
+
+height:60px;
+
+padding:0 34px;
+
+border-radius:16px;
+
+cursor:pointer;
+
+font-size:15px;
+
+font-weight:600;
+
+transition:.4s;
+
+}
+
+/* ===========================================
+   PRIMARY
+=========================================== */
+
+.primary{
+
+background:#c9a227;
+
+border:none;
+
+color:#111;
+
+box-shadow:
+
+0 0 45px rgba(201,162,39,.35);
+
+}
+
+.primary:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+
+0 20px 60px rgba(201,162,39,.55);
+
+}
+
+/* ===========================================
+   SECONDARY
+=========================================== */
+
+.secondary{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+color:white;
+
+backdrop-filter:blur(20px);
+
+}
+
+.secondary:hover{
+
+background:rgba(255,255,255,.08);
+
+transform:translateY(-4px);
+
+}
+
+/* ===========================================================
+   RIGHT SIDE
+=========================================================== */
+
+.hero-right{
+    position:relative;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    height:100vh;
+
+    overflow:visible;
+}
+.hero-right img{
+
+    position:absolute;
+
+    right:0;
+
+    bottom:0;
+
+    width:760px;
+
+    max-width:none;
+
+    z-index:5;
+}
+/* Golden Halo */
+
+.circle{
+
+    position:absolute;
+
+    width:620px;
+    height:620px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle,
+    rgba(201,162,39,.45) 0%,
+    rgba(201,162,39,.15) 35%,
+    transparent 72%);
+
+    filter:blur(15px);
+
+    animation:halo 8s ease-in-out infinite;
+
+}
+
+/* Glass Ring */
+
+.circle::before{
+
+content:"";
+
+position:absolute;
+
+inset:40px;
+
+border-radius:50%;
+
+border:1px solid rgba(255,255,255,.08);
+
+backdrop-filter:blur(10px);
+
+}
+
+.circle::after{
+
+content:"";
+
+position:absolute;
+
+inset:85px;
+
+border-radius:50%;
+
+border:1px solid rgba(201,162,39,.18);
+
+}
+
+/* Image */
+
+.hero-right img{
+
+position:relative;
+
+z-index:5;
+
+width:650px;
+
+max-width:100%;
+
+object-fit:contain;
+
+filter:
+
+drop-shadow(0 60px 80px rgba(0,0,0,.65))
+drop-shadow(0 0 70px rgba(201,162,39,.22));
+
+animation:float 6s ease-in-out infinite;
+
+transition:.5s;
+
+}
+
+.hero-right img:hover{
+
+transform:scale(1.03);
+
+}
+
+/* ======================================
+Floating Light
+====================================== */
+
+
+/* ======================================
+Particles
+====================================== */
+
+
+
+/* ======================================
+Animations
+====================================== */
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-18px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes halo{
+
+0%{
+
+transform:scale(1);
+
+opacity:.30;
+
+}
+
+50%{
+
+transform:scale(1.08);
+
+opacity:.45;
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:.30;
+
+}
+
+}
+
+@keyframes particleMove{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+100%{
+
+transform:translateY(-120px);
+
+}
+
+}
+
+/* ======================================
+Responsive
+====================================== */
+
+
+
+
+
+/* ===================================================
+   GRID OVERLAY
+=================================================== */
+
+.grid-overlay{
+
+position:absolute;
+
+inset:0;
+
+background-image:
+
+linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+
+linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+
+background-size:80px 80px;
+
+mask-image:radial-gradient(circle,#fff 25%,transparent 90%);
+
+opacity:.18;
+
+pointer-events:none;
+
+}
+
+/* ===================================================
+   HERO LINES
+=================================================== */
+
+.hero-lines{
+
+position:absolute;
+
+inset:0;
+
+background:
+
+linear-gradient(90deg,
+
+transparent,
+
+rgba(201,162,39,.08),
+
+transparent);
+
+transform:skewX(-25deg);
+
+animation:moveLine 8s linear infinite;
+
+pointer-events:none;
+
+}
+
+/* ===================================================
+   MOUSE LIGHT
+=================================================== */
+
+.mouse-light{
+
+position:absolute;
+
+width:450px;
+
+height:450px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(circle,
+
+rgba(201,162,39,.18),
+
+transparent 70%);
+
+filter:blur(45px);
+
+pointer-events:none;
+
+z-index:3;
+
+left:50%;
+
+top:50%;
+
+transform:translate(-50%,-50%);
+
+transition:
+
+left .12s linear,
+
+top .12s linear;
+
+}
+
+/* ===================================================
+   BUTTON SHINE
+=================================================== */
+
+.primary{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.primary::before{
+
+content:"";
+
+position:absolute;
+
+left:-150%;
+
+top:0;
+
+width:120px;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.55),
+
+transparent);
+
+transform:skewX(-20deg);
+
+transition:.8s;
+
+}
+
+.primary:hover::before{
+
+left:180%;
+
+}
+
+/* ===================================================
+   GLASS REFLECTION
+=================================================== */
+
+.secondary{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.secondary::before{
+
+content:"";
+
+position:absolute;
+
+left:-100%;
+
+top:0;
+
+width:80px;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.25),
+
+transparent);
+
+transform:skewX(-25deg);
+
+transition:.8s;
+
+}
+
+.secondary:hover::before{
+
+left:180%;
+
+}
+
+/* ===================================================
+   SCROLL INDICATOR
+=================================================== */
+
+.scroll-indicator{
+
+position:absolute;
+
+bottom:45px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:28px;
+
+height:52px;
+
+border-radius:50px;
+
+border:1px solid rgba(255,255,255,.18);
+
+display:flex;
+
+justify-content:center;
+
+align-items:flex-start;
+
+padding-top:8px;
+
+z-index:20;
+
+}
+
+.scroll-indicator span{
+
+width:5px;
+
+height:12px;
+
+border-radius:20px;
+
+background:#c9a227;
+
+animation:scrollWheel 2s infinite;
+
+}
+
+/* ===================================================
+   HEADING GLOW
+=================================================== */
+
+.gold{
+
+text-shadow:
+
+0 0 25px rgba(201,162,39,.35),
+
+0 0 60px rgba(201,162,39,.18);
+
+}
+
+.white{
+
+text-shadow:
+
+0 0 20px rgba(255,255,255,.08);
+
+}
+
+/* ===================================================
+   DESCRIPTION
+=================================================== */
+
+.description{
+
+backdrop-filter:blur(8px);
+
+}
+
+/* ===================================================
+   BUTTON HOVER
+=================================================== */
+
+button{
+
+will-change:transform;
+
+}
+
+button:hover{
+
+transform:
+
+translateY(-6px)
+
+scale(1.02);
+
+}
+
+/* ===================================================
+   NAV GAP (Future)
+=================================================== */
+
+.hero{
+
+padding-top:90px;
+
+}
+
+/* ===================================================
+   ANIMATIONS
+=================================================== */
+
+@keyframes scrollWheel{
+
+0%{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+100%{
+
+opacity:0;
+
+transform:translateY(18px);
+
+}
+
+}
+
+@keyframes moveLine{
+
+0%{
+
+transform:
+
+translateX(-100%)
+
+skewX(-25deg);
+
+}
+
+100%{
+
+transform:
+
+translateX(200%)
+
+skewX(-25deg);
+
+}
+
+}
+
+/* =========================================================
+   HERO FOUNDATION
+========================================================= */
+
+:host{
+    display:block;
+}
+
+.hero{
+
+    position:relative;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    background:#050505;
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+/* =========================================================
+BACKGROUND
+========================================================= */
+
+.hero-bg{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    radial-gradient(circle at 80% 30%,rgba(201,162,39,.18),transparent 30%),
+
+    radial-gradient(circle at 10% 80%,rgba(255,255,255,.05),transparent 35%),
+
+    linear-gradient(
+    180deg,
+    #090909,
+    #040404,
+    #000);
+
+}
+
+.hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+    rgba(0,0,0,.15),
+    rgba(0,0,0,.45));
+
+}
+
+/* =========================================================
+GRID
+========================================================= */
+
+.grid{
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:.08;
+
+    background-image:
+
+    linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
+
+    linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
+
+    background-size:80px 80px;
+
+}
+
+/* =========================================================
+SPOTLIGHT
+========================================================= */
+
+.spotlight{
+
+    position:absolute;
+
+    width:650px;
+
+    height:650px;
+
+    left:60%;
+
+    top:20%;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    background:rgba(201,162,39,.18);
+
+}
+
+/* =========================================================
+CONTAINER
+========================================================= */
+
+.container{
+
+    position:relative;
+
+    z-index:5;
+
+    width:min(1450px,92%);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1.05fr .95fr;
+
+    gap:40px;
+
+    align-items:center;
+
+}
+
+/* =========================================================
+LEFT
+========================================================= */
+
+.hero-left{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.eyebrow{
+
+    display:inline-flex;
+
+    width:max-content;
+
+    padding:10px 22px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:#c9a227;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    letter-spacing:4px;
+
+    backdrop-filter:blur(18px);
+
+}
+
+.hero-left h1{
+
+    margin-top:35px;
+
+    line-height:.92;
+
+}
+
+.hero-left h1 span{
+
+    display:block;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:8rem;
+
+    font-weight:700;
+
+    letter-spacing:-4px;
+
+}
+
+.white{
+
+    color:#fff;
+
+}
+
+.gold{
+
+    color:#d4af37;
+
+    text-shadow:
+
+    0 0 35px rgba(212,175,55,.35);
+
+}
+
+.hero-left h3{
+
+    margin-top:30px;
+
+    font-size:28px;
+
+    font-weight:500;
+
+    color:#f5f5f5;
+
+}
+
+.hero-left p{
+
+    margin-top:22px;
+
+    max-width:620px;
+
+    color:#bcbcbc;
+
+    line-height:1.9;
+
+    font-size:18px;
+
+}
+
+/* =========================================================
+BUTTONS
+========================================================= */
+
+.buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    margin-top:45px;
+
+}
+
+.buttons button{
+
+    height:60px;
+
+    padding:0 34px;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.45s;
+
+}
+
+.primary{
+
+    border:none;
+
+    color:#111;
+
+    background:#d4af37;
+
+    box-shadow:
+
+    0 0 40px rgba(212,175,55,.30);
+
+}
+
+.primary:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+
+    0 20px 60px rgba(212,175,55,.50);
+
+}
+
+.secondary{
+
+    color:#fff;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+}
+
+.secondary:hover{
+
+    transform:translateY(-5px);
+
+    background:rgba(255,255,255,.08);
+
+}
+
+/* =========================================================
+RIGHT
+========================================================= */
+
+
+
+/* =========================================================
+GOLD HALO
+========================================================= */
+
+.gold-circle{
+
+    position:absolute;
+
+    width:600px;
+
+    height:600px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+
+    rgba(212,175,55,.35),
+
+    rgba(212,175,55,.08),
+
+    transparent 72%);
+
+    filter:blur(20px);
+
+    animation:halo 8s ease-in-out infinite;
+
+}
+
+/* =========================================================
+IMAGE
+========================================================= */
+
+.hero-image{
+
+    position:relative;
+
+    z-index:5;
+
+    width:720px;
+
+    max-width:none;
+
+    object-fit:contain;
+
+    filter:
+
+    drop-shadow(0 60px 80px rgba(0,0,0,.60))
+
+    drop-shadow(0 0 70px rgba(212,175,55,.22));
+
+    animation:float 6s ease-in-out infinite;
+
+    transition:.5s;
+
+}
+
+.hero-image:hover{
+
+    transform:scale(1.03);
+
+}
+
+/* =========================================================
+SCROLL
+========================================================= */
+
+.scroll{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:35px;
+
+    transform:translateX(-50%);
+
+    width:30px;
+
+    height:55px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:50px;
+
+    display:flex;
+
+    justify-content:center;
+
+    padding-top:8px;
+
+}
+
+.scroll span{
+
+    width:5px;
+
+    height:12px;
+
+    border-radius:20px;
+
+    background:#d4af37;
+
+    animation:scroll 2s infinite;
+
+}
+
+/* =========================================================
+ANIMATION
+========================================================= */
+
+@keyframes float{
+
+0%{transform:translateY(0);}
+
+50%{transform:translateY(-18px);}
+
+100%{transform:translateY(0);}
+
+}
+
+@keyframes halo{
+
+0%{
+
+transform:scale(1);
+
+opacity:.25;
+
+}
+
+50%{
+
+transform:scale(1.08);
+
+opacity:.4;
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:.25;
+
+}
+
+}
+
+@keyframes scroll{
+
+0%{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+100%{
+
+opacity:0;
+
+transform:translateY(18px);
+
+}
+
+}
+/*=====================================================
+FLOATING QUOTE BUBBLES
+=====================================================*/
+
+.bubble{
+
+position:absolute;
+
+width:240px;
+
+padding:20px 22px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+backdrop-filter:blur(24px);
+
+-webkit-backdrop-filter:blur(24px);
+
+border-radius:26px;
+
+box-shadow:
+
+0 20px 50px rgba(0,0,0,.45),
+
+0 0 35px rgba(212,175,55,.12);
+
+overflow:hidden;
+
+transition:.45s;
+
+animation:cloud 8s ease-in-out infinite;
+
+z-index:20;
+
+}
+
+.bubble:hover{
+
+transform:translateY(-8px) scale(1.04);
+
+border-color:#d4af37;
+
+box-shadow:
+
+0 25px 70px rgba(0,0,0,.55),
+
+0 0 45px rgba(212,175,55,.35);
+
+}
+
+.bubble::before{
+
+content:"";
+
+position:absolute;
+
+left:-130%;
+
+top:0;
+
+width:100%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.18),
+
+transparent);
+
+transform:skewX(-20deg);
+
+animation:shine 8s linear infinite;
+
+}
+
+.bubble span{
+
+display:block;
+
+font-size:15px;
+
+line-height:1.8;
+
+color:#f8f8f8;
+
+font-weight:500;
+
+padding-left:18px;
+
+}
+
+/*=====================================================
+GLOW DOT
+=====================================================*/
+
+.icon{
+
+position:absolute;
+
+left:18px;
+
+top:22px;
+
+width:8px;
+
+height:8px;
+
+border-radius:50%;
+
+background:#d4af37;
+
+box-shadow:
+
+0 0 18px #d4af37,
+
+0 0 30px rgba(212,175,55,.8);
+
+animation:pulse 2s infinite;
+
+}
+
+/*=====================================================
+POSITIONS
+=====================================================*/
+
+.b1{
+
+top:7%;
+
+left:-70px;
+
+animation-delay:0s;
+
+}
+
+.b2{
+
+top:18%;
+
+right:-80px;
+
+animation-delay:1.5s;
+
+}
+
+.b3{
+
+bottom:22%;
+
+left:-45px;
+
+animation-delay:3s;
+
+}
+
+.b4{
+
+bottom:7%;
+
+right:-90px;
+
+animation-delay:4.5s;
+
+}
+
+/*=====================================================
+ORBIT RINGS
+=====================================================*/
+
+.ring{
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+transform:translate(-50%,-50%);
+
+border-radius:50%;
+
+border:1px solid rgba(212,175,55,.10);
+
+animation:rotate 35s linear infinite;
+
+}
+
+.r1{
+
+width:620px;
+
+height:620px;
+
+}
+
+.r2{
+
+width:760px;
+
+height:760px;
+
+animation-direction:reverse;
+
+opacity:.45;
+
+}
+
+/*=====================================================
+FLOATING PARTICLES
+=====================================================*/
+
+.dot{
+
+position:absolute;
+
+width:6px;
+
+height:6px;
+
+border-radius:50%;
+
+background:#d4af37;
+
+box-shadow:
+
+0 0 12px rgba(212,175,55,.9),
+
+0 0 28px rgba(212,175,55,.5);
+
+animation:particle 10s linear infinite;
+
+}
+
+.d1{top:12%;left:22%;animation-delay:0s;}
+.d2{top:22%;right:18%;animation-delay:2s;}
+.d3{top:48%;left:8%;animation-delay:4s;}
+.d4{bottom:20%;right:14%;animation-delay:1s;}
+.d5{bottom:10%;left:30%;animation-delay:3s;}
+.d6{top:70%;right:35%;animation-delay:5s;}
+
+/*=====================================================
+ANIMATIONS
+=====================================================*/
+
+@keyframes cloud{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+25%{
+
+transform:translateY(-10px) rotate(.6deg);
+
+}
+
+50%{
+
+transform:translateY(8px) rotate(-.6deg);
+
+}
+
+75%{
+
+transform:translateY(-6px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes shine{
+
+0%{
+
+left:-130%;
+
+}
+
+100%{
+
+left:140%;
+
+}
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+50%{
+
+transform:scale(1.9);
+
+opacity:.35;
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+@keyframes rotate{
+
+from{
+
+transform:translate(-50%,-50%) rotate(0deg);
+
+}
+
+to{
+
+transform:translate(-50%,-50%) rotate(360deg);
+
+}
+
+}
+
+@keyframes particle{
+
+0%{
+
+transform:translateY(0);
+
+opacity:0;
+
+}
+
+15%{
+
+opacity:1;
+
+}
+
+50%{
+
+transform:translateY(-35px);
+
+}
+
+100%{
+
+transform:translateY(-70px);
+
+opacity:0;
+
+}
+
+}
+/*=========================================================
+ PREMIUM GLASS REFLECTION
+=========================================================*/
+
+.hero-right::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+pointer-events:none;
+
+background:
+
+radial-gradient(circle at 30% 25%,
+
+rgba(255,255,255,.12),
+
+transparent 20%),
+
+radial-gradient(circle at 70% 70%,
+
+rgba(212,175,55,.08),
+
+transparent 25%);
+
+mix-blend-mode:screen;
+
+animation:glassMove 14s ease-in-out infinite;
+
+z-index:2;
+
+}
+
+.hero-right::after{
+
+content:"";
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+transform:translate(-50%,-50%);
+
+width:900px;
+
+height:900px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(circle,
+
+rgba(212,175,55,.10),
+
+transparent 70%);
+
+filter:blur(80px);
+
+z-index:0;
+
+animation:glowPulse 8s ease-in-out infinite;
+
+}
+
+.image-fade{
+
+    position:absolute;
+
+    left:50%;
+    bottom:0;
+
+    transform:translateX(-50%);
+
+    width:340px;
+    height:130px;
+
+    background:linear-gradient(
+        to top,
+        rgba(11,11,11,1) 5%,
+        rgba(11,11,11,.92) 35%,
+        rgba(11,11,11,.65) 60%,
+        transparent 100%
+    );
+
+    border-radius:0 0 180px 180px;
+
+    filter:blur(18px);
+
+    pointer-events:none;
+
+    z-index:25;
+
+}
+/*=========================================================
+ IMAGE HOVER
+=========================================================*/
+
+.hero-image{
+
+cursor:pointer;
+
+transform-style:preserve-3d;
+
+will-change:transform;
+
+}
+
+.hero-right:hover .hero-image{
+
+transform:
+
+translateY(-12px)
+
+scale(1.03)
+
+rotateX(2deg)
+
+rotateY(-2deg);
+
+filter:
+
+drop-shadow(0 80px 100px rgba(0,0,0,.65))
+
+drop-shadow(0 0 90px rgba(212,175,55,.35));
+
+}
+
+/*=========================================================
+ BUTTON SHINE
+=========================================================*/
+
+.buttons button{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.buttons button::before{
+
+content:"";
+
+position:absolute;
+
+left:-120%;
+
+top:0;
+
+width:60%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.45),
+
+transparent);
+
+transform:skewX(-25deg);
+
+transition:.8s;
+
+}
+
+.buttons button:hover::before{
+
+left:160%;
+
+}
+
+/*=========================================================
+ TYPOGRAPHY EFFECT
+=========================================================*/
+
+.hero-left h1 span{
+
+transition:.4s;
+
+}
+
+.hero-left:hover .gold{
+
+letter-spacing:3px;
+
+text-shadow:
+
+0 0 25px rgba(212,175,55,.5),
+
+0 0 60px rgba(212,175,55,.25);
+
+}
+
+.hero-left:hover .white{
+
+transform:translateX(6px);
+
+}
+
+/*=========================================================
+ SCROLL INDICATOR
+=========================================================*/
+
+.scroll{
+
+backdrop-filter:blur(15px);
+
+background:rgba(255,255,255,.03);
+
+}
+
+/*=========================================================
+ RESPONSIVE
+=========================================================*/
+
+
+
+@media(max-width:768px){
+
+.hero{
+
+padding:120px 0 80px;
+
+}
+
+.hero-left h1 span{
+
+font-size:4.5rem;
+
+letter-spacing:-2px;
+
+}
+
+.hero-left h3{
+
+font-size:22px;
+
+}
+
+.hero-left p{
+
+font-size:16px;
+
+}
+
+.hero-image{
+
+width:380px;
+
+}
+
+.buttons{
+
+flex-direction:column;
+
+width:100%;
+
+}
+
+.buttons button{
+
+width:100%;
+
+}
+
+.scroll{
+
+display:none;
+
+}
+
+}
+
+/*=========================================================
+ ANIMATIONS
+=========================================================*/
+
+@keyframes glassMove{
+
+0%{
+
+transform:translate(0,0);
+
+}
+
+50%{
+
+transform:translate(20px,-20px);
+
+}
+
+100%{
+
+transform:translate(0,0);
+
+}
+
+}
+
+@keyframes glowPulse{
+
+0%{
+
+transform:translate(-50%,-50%) scale(1);
+
+opacity:.30;
+
+}
+
+50%{
+
+transform:translate(-50%,-50%) scale(1.08);
+
+opacity:.55;
+
+}
+
+100%{
+
+transform:translate(-50%,-50%) scale(1);
+
+opacity:.30;
+
+}
+
+}
+
+.hero-info{
+
+    position:absolute;
+
+    bottom:27px;
+    left:56%;
+
+    transform:translateX(-50%);
+
+    width:320px;
+
+    padding:10px 16px;
+background: rgba(15,15,15,.32);
+
+backdrop-filter: saturate(200%) blur(80px);
+-webkit-backdrop-filter: saturate(200%) blur(80px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,.30),
+    inset 0 1px 0 rgba(255,255,255,.05);
+
+    overflow:hidden;
+
+    z-index:60;
+
+    text-align:center;
+
+}
+
+/* .hero-info::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:18px;
+    top:0;
+
+    width:0px;
+    height:2px;
+
+    background:#C9A227;
+
+    border-radius:50px;
+
+} */
+
+.hero-info::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:45%;
+
+    background:linear-gradient(
+        180deg,
+        rgba(255,255,255,.08),
+        transparent
+    );
+
+    border-radius:18px 18px 0 0;
+
+    pointer-events:none;
+
+}
+
+.hero-info h3{
+
+    margin:2px 0 6px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    color:#fff;
+
+    line-height:1.2;
+
+    text-shadow:0 0 12px rgba(255,255,255,.08);
+
+}
+
+.hero-info span{
+
+    display:block;
+
+    margin-top:2px;
+
+    font-size:9px;
+
+    font-weight:600;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.5px;
+
+    line-height:1.5;
+
+    color:#C9A227;
+
+}
+
+.hero-info p{
+
+    margin-top:6px;
+
+    font-size:8px;
+
+    font-weight:500;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.5px;
+
+    line-height:1.6;
+
+    color:#D6D6D6;
+
+}
+
+/* =========================================================
+   RESPONSIVE (single clean source of truth)
+========================================================= */
+
+@media (max-width: 1300px) {
+  .line { font-size: 6rem; }
+  .circle { width: 500px; height: 500px; }
+  .hero-right img { width: 620px; }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    text-align: center;
+    padding-top: 140px;
+  }
+
+  .hero-left { align-items: center; }
+  .description { max-width: 100%; }
+  .buttons { justify-content: center; }
+
+  .line { font-size: 4.8rem; }
+
+  .hero-right {
+    height: auto;
+    min-height: 480px;
+    margin-top: 20px;
+  }
+
+  .circle { width: 420px; height: 420px; }
+  .hero-right img { width: 460px; }
+
+  /* decorative elements hide on tablet/mobile — overlap karte hain */
+ .bubble { display: none; }
+
+  .hero-info {
+    left: 50%;
+    width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero { padding-top: 110px; }
+
+  .eyebrow { font-size: 11px; letter-spacing: 3px; }
+
+  .line { font-size: 3.4rem; letter-spacing: -2px; }
+  .subtitle { font-size: 18px; margin-top: 18px; }
+  .description { font-size: 15px; line-height: 1.7; margin-top: 16px; }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+    margin-top: 32px;
+  }
+  .buttons button { width: 100%; height: 54px; }
+
+  .hero-right {
+    min-height: 380px;
+    margin-top: 10px;
+  }
+  .circle { width: 320px; height: 320px; }
+  .hero-right img { width: 340px; }
+
+  .image-fade { width: 240px; height: 90px; }
+
+  .hero-info {
+    width: 90%;
+    max-width: 300px;
+    bottom: 14px;
+    padding: 8px 12px;
+  }
+  .hero-info h3 { font-size: 15px; }
+
+  .scroll-indicator { display: none; }
+}
+
+@media (max-width: 420px) {
+  .line { font-size: 2.7rem; }
+  .subtitle { font-size: 16px; }
+  .circle { width: 260px; height: 260px; }
+  .hero-right img { width: 270px; }
+  .hero-right { min-height: 320px; }
+}
+/* =========================================================
+   BUBBLES ON MOBILE — all 4 shown, no overlap
+========================================================= */
+
+@media (max-width: 1024px) {
+  .bubble {
+    display: flex;
+    align-items: center;
+    width: 165px;
+    padding: 10px 12px;
+     /* mobile pe floating motion off */
+  }
+
+  .bubble span {
+    font-size: 11px;
+    line-height: 1.45;
+    padding-left: 10px;
+  }
+
+  .icon {
+    left: 10px;
+    top: 12px;
+    width: 6px;
+    height: 6px;
+  }
+
+  /* 2x2 grid style positioning — top row + middle row */
+  .b1 { top: 2%;  left: 1%; }
+  .b2 { top: 1%;  right: 1%; }
+  .b3 { top: 54%; left: 1%; }
+  .b4 { top: 60%; right: 1%; }
+}
+
+@media (max-width: 480px) {
+  .bubble {
+    width: 130px;
+    padding: 8px 10px;
+  }
+  .bubble span { font-size: 9.5px; line-height: 1.35; }
+  .icon { width: 5px; height: 5px; top: 10px; left: 8px; }
+}
+
+/* =========================================================
+   HERO-INFO CARD — shrink to match photo width on mobile
+========================================================= */
+
+
+
+@media (max-width: 420px) {
+  .hero-info {
+    width: 82%;
+    max-width: 250px;
+    padding: 6px 10px;
+    bottom: 6px;
+  }
+  .hero-info h3 { font-size: 12.5px; margin: 0 0 3px; }
+  .hero-info span { font-size: 7px; }
+  .hero-info p { font-size: 6.5px; margin-top: 3px; }
+}
+@media (max-width: 1024px) {
+  .ring { display: block; }
+  .r1 { width: 420px; height: 420px; }
+  .r2 { width: 520px; height: 520px; }
+  .dot { display: block; width: 5px; height: 5px; }
+}
+
+@media (max-width: 768px) {
+  .r1 { width: 340px; height: 340px; }
+  .r2 { width: 420px; height: 420px; }
+}
+
+@media (max-width: 420px) {
+  .r1 { width: 280px; height: 280px; }
+  .r2 { width: 340px; height: 340px; }
+  .dot { width: 4px; height: 4px; }
+}
+
+/* =========================================================
+   WORDMARK — "THE LEGEND" editorial treatment
+========================================================= */
+
+.wordmark{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  margin-bottom:12px;
+  animation:wordmarkReveal 1.1s ease-out;
+}
+
+.wordmark-ornament{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:12px;
+}
+
+.wordmark-star{
+  font-size:14px;
+  color:#d4af37;
+  opacity:.85;
+}
+
+.wordmark-mini-line{
+  width:36px;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(212,175,55,.6));
+}
+
+.wordmark-text{
+  font-family:"Playfair Display", serif;
+  font-size:clamp(26px, 3.2vw, 40px);
+  font-weight:700;
+  letter-spacing:10px;
+  text-transform:uppercase;
+  background:linear-gradient(180deg, #f5dfa0, #d4af37 55%, #b8891c);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  text-shadow:0 0 40px rgba(212,175,55,.4);
+  animation:wordmarkGlow 3.5s ease-in-out infinite;
+}
+
+.wordmark-line{
+  margin-top:8px;
+  width:110px;
+  height:2px;
+  background:linear-gradient(90deg, #d4af37, transparent);
+  box-shadow:0 0 10px rgba(212,175,55,.5);
+}
+
+@keyframes wordmarkReveal{
+  from{ opacity:0; transform:translateY(-16px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+@keyframes wordmarkGlow{
+  0%, 100%{ text-shadow:0 0 30px rgba(212,175,55,.35); }
+  50%{ text-shadow:0 0 55px rgba(212,175,55,.6); }
+}
+
+@media (max-width:768px){
+  .wordmark-text{ font-size:22px; letter-spacing:6px; }
+  .wordmark-line{ width:80px; }
+}
+/* =========================================================
+   PRIMARY BUTTON ARROW
+========================================================= */
+
+.primary .arrow{
+  display:inline-block;
+  margin-left:8px;
+  transition:transform .35s ease;
+}
+
+.primary:hover .arrow{
+  transform:translateX(6px);
+}
+
+/* =========================================================
+   SOCIAL FOLLOW AREA (replaces "Watch Film")
+========================================================= */
+
+.social-follow{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:8px;
+}
+
+.follow-label{
+  font-family:"Playfair Display", serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:#d4af37;
+  opacity:.85;
+}
+
+.social-icons{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.social-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.1);
+  color:#e5e5e5;
+  transition: color .35s ease, transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+.social-icon:hover,
+.social-icon:focus-visible{
+  color:#d4af37;
+  border-color:rgba(212,175,55,.5);
+  transform:translateY(-3px) scale(1.06);
+  box-shadow:0 0 18px rgba(212,175,55,.35);
+}
+
+.social-icon:focus-visible{
+  outline:1px solid rgba(212,175,55,.6);
+  outline-offset:2px;
+}
+
+.social-divider{
+  width:1px;
+  height:20px;
+  background:rgba(255,255,255,.12);
+}
+
+/* =========================================================
+   RESPONSIVE — social follow area
+========================================================= */
+
+@media (max-width:768px){
+  .buttons{
+    align-items:center;
+  }
+  .social-follow{
+    align-items:center;
+    margin-top:6px;
+  }
+}
+/* =========================================================
+   FINAL CROWN + LAST A FIX
+========================================================= */
+
+.hero-left h1 .line.white {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.hero-left h1 .last-letter {
+  position: relative;
+  display: inline-block !important;
+  width: auto;
+  white-space: nowrap;
+}
+
+.hero-left h1 .crown-icon {
+  position: absolute;
+
+  width: 100px;
+  height: auto;
+
+  /* A ke upar */
+  top: -38px;
+
+  /* A ke right side */
+  left: 72%;
+
+  transform: translateX(-50%) rotate(8deg);
+
+  z-index: 20;
+  pointer-events: none;
+
+  filter:
+    drop-shadow(0 4px 8px rgba(212,175,55,.55))
+    drop-shadow(0 0 20px rgba(212,175,55,.28));
+
+  animation: crownFloatFinal 3s ease-in-out infinite;
+}
+
+@keyframes crownFloatFinal {
+
+  0%, 100% {
+    transform:
+      translateX(-50%)
+      rotate(8deg)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateX(-50%)
+      rotate(8deg)
+      translateY(-4px);
+  }
+
+}
+
+
+/* TABLET */
+@media (max-width: 1300px) {
+
+  .hero-left h1 .last-letter {
+    display: inline-block !important;
+  }
+
+  .hero-left h1 .crown-icon {
+    width: 85px;
+    top: -34px;
+    left: 72%;
+  }
+
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .hero-left h1 .last-letter {
+    display: inline-block !important;
+  }
+
+  .hero-left h1 .crown-icon {
+    width: 60px;
+    top: -25px;
+    left: 72%;
+  }
+
+}
+
+
+/* SMALL MOBILE */
+@media (max-width: 420px) {
+
+  .hero-left h1 .crown-icon {
+    width: 45px;
+    top: -20px;
+    left: 72%;
+  }
+
+}
+/* =========================================================
+   MOBILE — REDUCE TOP GAP
+   Desktop / Windows remains unchanged
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .hero {
+    padding-top: 70px;
+  }
+
+  .container {
+    padding-top: 0;
+  }
+
+}

@@ -1,0 +1,92 @@
+<section class="global-impact-root">
+
+  <!-- ================= CINEMATIC PINNED STAGE ================= -->
+  <div class="cinema-stage">
+
+    <div class="stars"></div>
+    <div class="particles">
+      <span *ngFor="let p of particles"
+            [style.left.%]="p.left"
+            [style.animationDelay.s]="p.delay"
+            [style.animationDuration.s]="p.duration"></span>
+    </div>
+
+    <div class="section-label">
+      <span class="eyebrow">Global Impact</span>
+      <p class="subtitle">From One Small Village… To Touching the Entire World.</p>
+    </div>
+
+    <!-- ORIGIN SCENE -->
+    <div class="origin-scene">
+      <div class="glow-layer india-glow"></div>
+      <div class="glow-layer odisha-glow"></div>
+      <div class="origin-dot"></div>
+      <span class="origin-label">Kalarabanka, Odisha</span>
+    </div>
+
+    <div class="stage-text village">One Village</div>
+    <div class="stage-text state">One State</div>
+    <div class="stage-text nation">One Nation</div>
+    <div class="stage-text borders">Education Knows No Borders.</div>
+    <div class="stage-text inspires">A Dream Born In Odisha…<br>Now Inspires The World.</div>
+
+    <!-- GLOBE -->
+    <div class="globe-wrap">
+      <div class="globe-atmosphere"></div>
+      <div class="globe-sphere"></div>
+      <div class="globe-map"></div>
+
+      <svg class="conn-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <line class="conn-line" *ngFor="let c of countries"
+              [attr.x1]="originX" [attr.y1]="originY"
+              [attr.x2]="c.left" [attr.y2]="c.top"></line>
+      </svg>
+
+      <div class="country-tag"
+           *ngFor="let c of countries"
+           [style.top]="c.top" [style.left]="c.left">
+        <span class="tag-dot"></span>
+        <div class="tag-info">
+          <strong>{{ c.name }}</strong>
+          <span *ngFor="let i of c.info">{{ i }}</span>
+        </div>
+      </div>
+
+      <div class="origin-marker" [style.top.%]="originY" [style.left.%]="originX">
+        <span class="tag-dot origin"></span>
+      </div>
+    </div>
+
+    <!-- FINALE -->
+    <div class="finale-wrap">
+      <div class="finale-star"></div>
+      <p class="finale-quote">
+        <span class="word">"The</span>
+        <span class="word">greatest</span>
+        <span class="word">journeys</span>
+        <span class="word">are</span>
+        <span class="word">not</span>
+        <span class="word">measured</span>
+        <span class="word">by</span>
+        <span class="word">distance…</span>
+        <span class="word">but</span>
+        <span class="word">by</span>
+        <span class="word">the</span>
+        <span class="word">lives</span>
+        <span class="word">they</span>
+        <span class="word">transform."</span>
+      </p>
+      <p class="finale-line">One Vision. Millions of Lives. A Legacy Beyond Borders.</p>
+    </div>
+
+  </div>
+
+  <!-- ================= COUNTERS ================= -->
+  <div class="counters-section">
+    <div class="counter-block" *ngFor="let c of counters">
+      <span class="counter-value" [attr.data-target]="c.target">0</span><span class="counter-suffix">{{ c.suffix }}</span>
+      <p class="counter-label">{{ c.label }}</p>
+    </div>
+  </div>
+
+</section>

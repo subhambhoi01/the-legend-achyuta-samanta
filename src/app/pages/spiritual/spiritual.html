@@ -1,0 +1,56 @@
+<section class="spiritual-section">
+
+  <div class="ambient-glow"></div>
+
+  <div class="particles">
+    <span *ngFor="let p of particles"
+          [style.left.%]="p.left"
+          [style.animationDelay.s]="p.delay"
+          [style.animationDuration.s]="p.duration"></span>
+  </div>
+
+  <div class="spiritual-header">
+    <span class="eyebrow">The Spiritual Foundation</span>
+    <h2>SPIRITUAL JOURNEY</h2>
+    <p class="subtitle">
+      Beyond education and service lies a lifelong journey of faith. Guided by devotion,
+      discipline and the blessings of Lord Jagannath, every mission begins with prayer and purpose.
+    </p>
+    <div class="spiritual-highlight">
+      <span class="temple-icon">🛕</span>
+      <span>Created 25+ Temples Across Odisha</span>
+    </div>
+  </div>
+
+  <!-- SLIDER -->
+  <div class="slider-wrap" (mouseenter)="pauseAutoplay()" (mouseleave)="startAutoplay()">
+
+    <button class="slider-arrow left" (click)="prev()">‹</button>
+
+    <div class="slider-viewport">
+      <div class="slider-track" [style.transform]="'translateX(-' + (currentIndex() * 100) + '%)'">
+        <div class="slide" *ngFor="let s of slides">
+          <img [src]="s.image" [alt]="s.caption"
+               (error)="$any($event.target).style.display='none'">
+          <div class="slide-overlay">
+            <span>{{ s.caption }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="slider-arrow right" (click)="next()">›</button>
+
+    <div class="slider-dots">
+      <span *ngFor="let s of slides; let i = index"
+            [class.active]="i === currentIndex()"
+            (click)="goTo(i)"></span>
+    </div>
+
+  </div>
+
+  <div class="spiritual-cta">
+    <button (click)="goToSpiritualJourney()">Explore Complete Spiritual Journey →</button>
+  </div>
+
+</section>

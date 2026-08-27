@@ -1,0 +1,197 @@
+<section class="sj-root">
+
+  <!-- HERO -->
+  <div class="sj-hero">
+    <div class="hero-bg">
+   <video class="hero-video" #heroVideo autoplay muted loop playsinline
+     poster="assets/images/spiritual-8.jpg">
+  <source src="assets/videos/video-temple.mp4" type="video/mp4">
+</video>
+
+    </div>
+    <div class="hero-particles">
+      <span *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12]"></span>
+    </div>
+    <h1 class="hero-title">THE SPIRITUAL JOURNEY</h1>
+    <p class="hero-subtitle">"Faith has always been the foundation of every mission."</p>
+  </div>
+
+  <!-- VIDEO + STORY SIDE-BY-SIDE (top section) -->
+  <div class="video-hero-section">
+    <div class="video-hero-media">
+<video
+    #videoPlayer
+    class="featured-video"
+    poster="assets/images/sj-13.jpg"
+    preload="metadata"
+    playsinline
+    webkit-playsinline
+    (click)="toggleFeaturedVideo(videoPlayer)"
+    (ended)="isPlaying=false; onFeaturedVideoStopped()">
+
+    <source
+        src="assets/videos/diwali-kiss.mp4"
+        type="video/mp4">
+
+</video>
+
+<div
+    class="center-toggle"
+    [class.hidden]="isPlaying"
+    (click)="toggleFeaturedVideo(videoPlayer)">
+
+    <span class="toggle-btn">{{ isPlaying ? '❚❚' : '▶' }}</span>
+
+</div>
+
+    <span class="video-caption">
+        {{featuredVideo.title}}
+    </span>
+
+</div>
+
+    <div class="video-hero-text">
+      <span class="eyebrow">Faith Before Every Beginning</span>
+      <h2>A Life Guided By Devotion</h2>
+      <p>
+        Every day begins with prayer. Long before the first meeting, the first classroom, or the
+        first decision of the day, there is a quiet moment of stillness — a discipline unbroken
+        across three decades of building institutions that now touch hundreds of thousands of lives.
+      </p>
+      <p>
+        Every month begins with the blessings of Lord Jagannath. On the first day, without exception,
+        the journey leads back to Puri — a pause to seek grace before the weight of a new month begins.
+      </p>
+      <p class="highlight-line">
+        Faith has always inspired every mission of education, compassion and humanity.
+      </p>
+    </div>
+  </div>
+
+  <!-- MORE VIDEOS -->
+  <!-- <div class="videos-section">
+    <div class="section-header">
+      <span class="eyebrow">Watch</span>
+      <h2>MORE MOMENTS</h2>
+    </div>
+    <div class="videos-row">
+      <div class="video-card" *ngFor="let v of videos" (click)="playVideo(v)">
+        <img [src]="v.thumbnail" [alt]="v.title"
+             (error)="$any($event.target).style.display='none'">
+        <div class="play-overlay small">
+          <span class="play-btn">▶</span>
+        </div>
+        <span class="video-title">{{ v.title }}</span>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- VIDEO PLAYER MODAL -->
+  <div class="video-modal" *ngIf="playingVideo()" (click)="playingVideo.set(null)">
+    <div class="video-modal-inner" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="playingVideo.set(null)">✕</button>
+      <iframe [src]="playingVideo()" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- PHOTO GALLERY (20 frames) -->
+  <div class="gallery-section">
+    <div class="section-header">
+      <span class="eyebrow">Moments</span>
+      <h2>PHOTO GALLERY</h2>
+    </div>
+    <div class="masonry-gallery">
+      <div class="gallery-item"
+           *ngFor="let photo of gallery; let i = index"
+           [ngClass]="'size-' + photo.size"
+           (click)="openLightbox(i)">
+        <img [src]="photo.image" [alt]="'Spiritual moment ' + (i+1)"
+             (error)="$any($event.target).style.display='none'">
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" *ngIf="lightboxIndex() !== null" (click)="closeLightbox()">
+    <button class="close-btn" (click)="closeLightbox()">✕</button>
+    <button class="lb-arrow left" (click)="prevPhoto(); $event.stopPropagation()">‹</button>
+    <img [src]="gallery[lightboxIndex()!].image" (click)="$event.stopPropagation()">
+    <button class="lb-arrow right" (click)="nextPhoto(); $event.stopPropagation()">›</button>
+  </div>
+
+  <!-- STORY SECTIONS -->
+  <div class="story-section">
+
+    <div class="story-block">
+      <h3>Lord Jagannath</h3>
+      <p>At the centre of this devotion stands Lord Jagannath — a presence that has shaped not
+         just personal faith, but a philosophy of service itself. The deity's message of unity,
+         welcoming people of every background without distinction, mirrors the very mission that
+         KIIT and KISS were built upon.</p>
+    </div>
+
+    <div class="story-block">
+      <h3>A Temple Within the Campus</h3>
+      <p>Within the KISS campus stands its own Jagannath Temple, in what is known as Sreevani
+         Khetra — built so that the children who call KISS home never have to look far for
+         faith. Every year on Diwali, following the rituals of the Puri Srimandir, over a
+         thousand earthen diyas are lit around the deities of Lord Jagannath, Lord Balabhadra
+         and Devi Subhadra — a tradition observed without fail, year after year.</p>
+    </div>
+
+    <div class="story-block">
+      <h3>Monthly Pilgrimage</h3>
+      <p>On the first day of every month, the journey leads to the Shree Jagannath Temple in
+         Puri. It is not ceremony for its own sake — it is an act of humility, a pause to seek
+         blessings before the responsibilities of a new month begin.</p>
+    </div>
+
+    <div class="story-block">
+      <h3>Rath Yatra at KISS — A Tradition of Faith</h3>
+       <p>
+    At the heart of this celebration is Dr. Achyuta Samanta, whose devotion to
+    Lord Jagannath has made the Rath Yatra an enduring part of life at KISS.
+    Year after year, he performs the sacred Chhera Pahanra — the ceremonial
+    sweeping of the chariots — before thousands of devotees begin the journey.
+    What began as a celebration of faith has grown into a powerful expression
+    of community, tradition and service.
+  </p>
+
+    </div>
+
+    <div class="story-block">
+      <h3>Faith Through Service</h3>
+      <p>In the end, every prayer finds its true expression not inside a temple, but outside it
+         — in a classroom built for a child who had none, in a meal served to a student who
+         needed it, in a life quietly changed. Faith gives direction. Service gives it purpose.</p>
+    </div>
+
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline-section">
+    <div class="timeline-row">
+      <ng-container *ngFor="let step of timeline; let last = last">
+        <div class="timeline-step">{{ step.label }}</div>
+        <div class="timeline-connector" *ngIf="!last">↓</div>
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-section">
+    <p class="quote-text">"Faith gives direction.<br>Service gives purpose."</p>
+  </div>
+
+  <!-- ENDING -->
+  <div class="ending-section">
+    <div class="ending-bg"></div>
+    <div class="ending-content">
+      <p class="ending-line">Every day begins with prayer.</p>
+      <p class="ending-line">Every month begins with the blessings of Lord Jagannath.</p>
+      <p class="ending-line accent">Faith has always inspired every mission of education, compassion and humanity.</p>
+      <button class="continue-btn" (click)="continueToLivingMemories()">Continue to Living Memories →</button>
+    </div>
+  </div>
+
+</section>

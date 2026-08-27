@@ -1,0 +1,522 @@
+:host{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+display:flex;
+
+justify-content:center;
+
+z-index:9999;
+
+padding:22px 0;
+
+pointer-events:none;
+
+}
+
+.navbar{
+
+width:min(1400px, 94%);
+
+height:72px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:16px;
+
+padding:0 30px;
+
+border-radius:22px;
+
+background:rgba(8,8,8,.55);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.08);
+
+box-shadow:
+
+0 10px 50px rgba(0,0,0,.45),
+
+0 0 1px rgba(255,255,255,.1);
+
+pointer-events:auto;
+
+transition: transform .45s cubic-bezier(.4,0,.2,1), background .45s;
+
+}
+
+/* ===========================================
+SCROLL HIDE / SHOW
+=========================================== */
+
+.navbar.nav-hidden{
+  transform: translateY(-140%);
+}
+
+.logo{
+
+display:flex;
+
+flex-direction:column;
+
+line-height:1;
+
+flex-shrink:0;
+
+text-decoration:none;
+
+}
+
+.logo .top{
+
+font-size:11px;
+
+letter-spacing:3px;
+
+color:#c9a227;
+
+font-weight:700;
+
+white-space:nowrap;
+
+}
+
+.logo .bottom{
+
+margin-top:5px;
+
+font-size:16px;
+
+font-weight:600;
+
+color:#fff;
+
+letter-spacing:1px;
+
+white-space:nowrap;
+
+}
+
+nav{
+
+display:flex;
+
+align-items:center;
+
+gap:20px;
+
+flex-wrap:nowrap;
+
+min-width:0;
+
+}
+
+nav a{
+
+position:relative;
+
+font-size:12.5px;
+
+font-weight:500;
+
+text-transform:uppercase;
+
+cursor:pointer;
+
+color:#fff;
+
+text-decoration:none;
+
+white-space:nowrap;
+
+transition:.35s;
+
+}
+
+nav a:hover{
+
+color:#c9a227;
+
+}
+
+nav a::after{
+
+content:"";
+
+position:absolute;
+
+bottom:-10px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:0;
+
+height:2px;
+
+background:#c9a227;
+
+transition:.35s;
+
+}
+
+nav a:hover::after,
+
+nav .active::after{
+
+width:100%;
+
+}
+
+nav .active{
+
+color:#c9a227;
+
+}
+
+.cta{
+
+flex-shrink:0;
+
+white-space:nowrap;
+
+height:46px;
+
+padding:0 22px;
+
+border-radius:14px;
+
+border:1px solid rgba(201,162,39,.6);
+
+background:transparent;
+
+color:#fff;
+
+font-size:13px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.35s;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+text-decoration:none;
+
+}
+
+.cta:hover{
+
+background:#c9a227;
+
+color:#000;
+
+box-shadow:0 0 30px rgba(201,162,39,.4);
+
+}
+
+/* ===========================================
+LARGE DESKTOP (1600px) — slightly tighter
+=========================================== */
+
+@media (max-width:1600px){
+
+nav{ gap:16px; }
+
+nav a{ font-size:12px; }
+
+}
+
+/* ===========================================
+DESKTOP (1440px)
+=========================================== */
+
+@media (max-width:1440px){
+
+.navbar{ padding:0 24px; }
+
+nav{ gap:13px; }
+
+nav a{ font-size:11.5px; }
+
+.cta{ padding:0 18px; height:44px; font-size:12px; }
+
+.logo .bottom{ font-size:15px; }
+
+}
+
+/* ===========================================
+LAPTOP (1200px)
+=========================================== */
+
+@media (max-width:1200px){
+
+.navbar{
+
+width:96%;
+padding:0 20px;
+
+}
+
+nav{
+
+gap:11px;
+
+}
+
+nav a{
+
+font-size:11px;
+
+}
+
+.logo .bottom{
+
+font-size:14px;
+
+}
+
+.cta{
+
+padding:0 16px;
+
+height:42px;
+
+font-size:11.5px;
+
+}
+
+}
+
+/* ===========================================
+TABLET
+=========================================== */
+
+@media (max-width:992px){
+
+.navbar{
+
+width:95%;
+
+height:66px;
+
+padding:0 20px;
+
+}
+
+/* Hide Desktop Menu */
+.desktop-nav{
+
+display:none;
+
+}
+
+/* Hide Desktop Button */
+.desktop-cta{
+
+display:none;
+
+}
+
+/* Show Hamburger */
+.hamburger{
+
+display:flex;
+
+}
+
+.logo .top{
+
+font-size:10px;
+
+letter-spacing:2px;
+
+}
+
+.logo .bottom{
+
+font-size:14px;
+
+}
+
+}
+
+/* ===========================================
+MOBILE
+=========================================== */
+
+@media (max-width:768px){
+
+:host{
+
+padding:14px 0;
+
+}
+
+.navbar{
+
+width:94%;
+
+height:62px;
+
+padding:0 18px;
+
+border-radius:18px;
+
+}
+
+.logo .top{
+
+font-size:10px;
+
+letter-spacing:2px;
+
+}
+
+.logo .bottom{
+
+font-size:15px;
+
+}
+
+}
+
+/* ===========================================
+SMALL MOBILE
+=========================================== */
+
+@media (max-width:480px){
+
+.navbar{
+
+height:56px;
+
+padding:0 15px;
+
+}
+
+.logo .top{
+
+font-size:9px;
+
+}
+
+.logo .bottom{
+
+font-size:13px;
+
+}
+
+}
+
+/* Hamburger */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:6px;
+  width:32px;
+  height:32px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  z-index:10000;
+  flex-shrink:0;
+}
+
+.hamburger span{
+  display:block;
+  width:100%;
+  height:2px;
+  background:#fff;
+  border-radius:2px;
+  transition:.35s;
+}
+
+.hamburger.active span:nth-child(1){
+  transform:translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2){
+  opacity:0;
+}
+
+.hamburger.active span:nth-child(3){
+  transform:translateY(-8px) rotate(-45deg);
+}
+
+.mobile-menu{
+  position:fixed;
+  top:0;
+  right:0;
+  width:78%;
+  max-width:320px;
+  height:100vh;
+  background:rgba(8,8,8,.97);
+  backdrop-filter:blur(20px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:32px;
+  transform:translateX(100%);
+  transition:.45s cubic-bezier(.4,0,.2,1);
+  z-index:9998;
+  pointer-events:none;
+}
+
+.mobile-menu.open{
+  transform:translateX(0);
+  pointer-events:auto;
+}
+
+.mobile-nav{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:24px;
+}
+
+.mobile-nav a{
+  font-size:16px;
+  font-weight:500;
+  text-transform:uppercase;
+  color:#fff;
+  cursor:pointer;
+  text-decoration:none;
+  letter-spacing:1px;
+}
+
+.mobile-nav .active{
+  color:#c9a227;
+}
+section, app-hero, app-about, app-journey, app-special-story,
+app-institutions, app-global-impact, app-achievements, app-spiritual {
+  scroll-margin-top: 100px;
+}
+/* ===========================================
+   FINAL OVERRIDE — hamburger must win on mobile
+   (must stay at the very bottom of this file)
+=========================================== */
+@media (max-width:992px){
+  .hamburger{
+    display:flex;
+  }
+}

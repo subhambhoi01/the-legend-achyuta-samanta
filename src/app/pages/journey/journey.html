@@ -1,0 +1,127 @@
+
+<section class="journey" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()">
+
+  <div class="ambient-light"></div>
+
+  <div class="particles">
+    <span *ngFor="let p of particles"
+          [style.left.%]="p.left"
+          [style.animationDelay.s]="p.delay"
+          [style.animationDuration.s]="p.duration"></span>
+  </div>
+
+  <div class="book" #bookEl [class.opened]="isOpened()">
+
+    <!-- SPINE -->
+    <div class="spine">
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- FRONT COVER -->
+    <div class="cover front" #coverEl>
+
+      <div class="cover-border"></div>
+      <div class="gold-frame"></div>
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+
+      <span class="year">1965 — Present</span>
+
+      <h1>
+        THE LIFE OF
+        <span>DR. ACHYUTA SAMANTA</span>
+      </h1>
+
+      <p>A Journey Through<br>Education, Compassion &amp; Humanity</p>
+
+      <button (click)="openBook(); $event.stopPropagation()">OPEN THE BOOK</button>
+
+    </div>
+
+    <!-- PAGES -->
+    <div class="pages-wrap" #pagesWrap [class.visible]="isOpened()">
+
+      <div class="page"
+           *ngFor="let chapter of chapters; let i = index"
+           #pageEl
+           [style.zIndex]="totalPages - i">
+
+        <!-- FRONT SIDE OF PAGE (chapter content) -->
+        <div class="page-face page-front">
+
+          <div class="page-border"></div>
+          <div class="ink-stain a"></div>
+          <div class="ink-stain b"></div>
+
+          <div class="page-header">
+            <span class="chapter-num">{{ chapter.num }}</span>
+            <h2>{{ chapter.title }}</h2>
+            <span class="chapter-subtitle">{{ chapter.subtitle }}</span>
+          </div>
+
+          <div class="page-meta">
+            <span>{{ chapter.year }}</span>
+            <span class="dot">•</span>
+            <span>{{ chapter.location }}</span>
+          </div>
+
+          <div class="photo-frame">
+            <img [src]="'assets/images/' + chapter.photo"
+                 [alt]="chapter.title"
+                 (error)="$any($event.target).style.display='none'">
+            <div class="photo-placeholder-label">{{ chapter.photo }}</div>
+          </div>
+
+          <div class="highlight-number" *ngIf="chapter.highlight">
+            {{ chapter.highlight }}
+          </div>
+
+          <div class="page-text">
+            <p *ngFor="let para of chapter.paragraphs">{{ para }}</p>
+          </div>
+
+          <blockquote class="handwritten-quote" *ngIf="chapter.quote">
+            “{{ chapter.quote }}”
+          </blockquote>
+
+          <div class="wax-seal"></div>
+
+        </div>
+
+        <!-- BACK SIDE OF PAGE (parchment blank) -->
+        <div class="page-face page-back">
+          <div class="page-border"></div>
+          <div class="parchment-texture"></div>
+          <span class="page-number">{{ i + 1 }}</span>
+        </div>
+
+      </div>
+
+      <!-- BACK COVER (revealed after last page) -->
+      <div class="back-cover" #backCoverEl [class.show]="showBackCover()">
+        <div class="gold-frame"></div>
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+        <p class="engraved">THE STORY CONTINUES…</p>
+        <p class="engraved-sub">Because millions of lives are still being transformed.</p>
+        <div class="signature">Achyuta Samanta</div>
+        <div class="seal glow"></div>
+      </div>
+
+      <!-- CONTROLS -->
+      <div class="controls" *ngIf="isOpened()">
+        <button class="nav-btn prev" (click)="prevPage()" [disabled]="currentPage() === 0">‹ Previous</button>
+        <span class="page-indicator">{{ currentPage() }} / {{ totalPages }}</span>
+        <button class="nav-btn next" (click)="nextPage()" [disabled]="currentPage() === totalPages">Next ›</button>
+        <button class="nav-btn close" (click)="closeBook()">Close Book</button>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
