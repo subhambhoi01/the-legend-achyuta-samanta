@@ -137,7 +137,7 @@ export class Institutions implements AfterViewInit {
       storyParagraphs: [
         'Beyond the walls of any single institution, Achyuta Samanta championed something larger — a philosophy called the "Art of Giving".',
         'Initiatives like "India Against Negativity" and "Kampashn" turned individual compassion into a collective movement, encouraging ordinary people to give back in ordinary, everyday ways.',
-        'What started as one man\u2019s example has become a culture — proof that kindness, once modeled, multiplies on its own.',
+        'What started as one man  example has become a culture — proof that kindness, once modeled, multiplies on its own.',
       ],
       closingLine: 'Giving was never the goal. It was always the beginning.',
     },
