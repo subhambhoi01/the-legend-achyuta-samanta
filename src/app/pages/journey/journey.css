@@ -218,20 +218,42 @@
 }
 
 .page-face{
-  position:absolute; inset:0;
+  position:absolute;
+  inset:0;
   backface-visibility:hidden;
   border-radius:6px;
+
+  /* IMPORTANT — page ke andar scroll */
   overflow-y:auto;
   overflow-x:hidden;
-  box-shadow:0 20px 60px rgba(0,0,0,.6);
+
   -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+  touch-action:pan-y;
+
+  scrollbar-width:thin;
+
+  box-shadow:0 20px 60px rgba(0,0,0,.6);
 }
 
 .page-front{
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(0,0,0,.15), transparent 50%),
-    linear-gradient(160deg,#efe0bd,#e6d1a2 40%,#dcc38c);
-  padding: clamp(20px, 5vw, 40px) clamp(18px, 5vw, 45px) clamp(40px, 8vh, 60px);
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0,0,0,.15),
+      transparent 50%
+    ),
+    linear-gradient(
+      160deg,
+      #efe0bd,
+      #e6d1a2 40%,
+      #dcc38c
+    );
+
+  padding:
+    clamp(20px, 5vw, 40px)
+    clamp(18px, 5vw, 45px)
+    90px;
 }
 
 .page-back{
@@ -285,17 +307,35 @@
 .photo-frame{
   position:relative;
   margin: clamp(14px, 3vh, 22px) auto 0;
-  width:100%; max-width:400px;
-  height: clamp(140px, 28vh, 230px);
+
+  width:100%;
+  max-width:400px;
+
+  aspect-ratio:16 / 9;
+  height:auto;
+
   border: clamp(2px, .8vw, 4px) solid #7a5510;
   border-radius:2px;
-  box-shadow:0 10px 25px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,236,190,.4);
+
+  background:#d8c18e;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.35),
+    inset 0 0 0 2px rgba(255,236,190,.4);
+
   overflow:hidden;
 }
-.photo-frame img{
-  width:100%; height:100%; object-fit:cover; filter:sepia(.25) contrast(1.05);
-}
 
+.photo-frame img{
+  display:block;
+  width:100%;
+  height:100%;
+
+  /* FULL IMAGE — NO CROP */
+  object-fit:contain;
+
+  filter:sepia(.12) contrast(1.03);
+}
 .highlight-number{
   text-align:center; margin: clamp(12px, 3vh, 20px) 0 5px;
   font-family:'Cinzel Decorative', serif; font-weight:900;
@@ -421,40 +461,553 @@
   50%{ transform:scale(1.08); }
 }
 
-/* ============ BREAKPOINTS ============ */
+/* =========================================================
+   RESPONSIVE BREAKPOINTS
+   Desktop stays untouched
+========================================================= */
 
-/* Tablets */
-@media (max-width: 1024px){
-  .book{ width: min(500px, 88vw); height: min(700px, 80vh); }
+
+/* =========================
+   TABLETS
+========================= */
+
+@media (max-width:1024px){
+
+  .book{
+    width:min(500px,88vw);
+    height:min(700px,80vh);
+  }
+
 }
 
-/* Large phones / small tablets */
-@media (max-width: 768px){
-  .journey{ padding: 20px 12px; }
-  .book{ width: 92vw; height: 78vh; }
-  .controls{ bottom: 10px; }
+
+/* =========================
+   MOBILE / TABLETS
+========================= */
+
+@media (max-width:768px){
+
+  .journey{
+    min-height:100svh;
+    width:100%;
+
+    padding:28px 12px 100px;
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    -webkit-overflow-scrolling:touch;
+  }
+
+
+  /* BOOK */
+
+  .book{
+    width:min(94vw,600px);
+
+    /*
+      Mobile book height
+      slightly taller than width
+    */
+    height:calc(min(94vw,600px) * 1.48);
+
+    max-height:none;
+    flex-shrink:0;
+
+    perspective:2200px;
+  }
+
+
+  /* =========================
+     COVER
+  ========================= */
+
+  .cover.front{
+    border-radius:9px;
+  }
+
+
+  .cover.front .year{
+    margin-top:clamp(42px,10vw,70px);
+
+    font-size:clamp(11px,3vw,16px);
+
+    letter-spacing:clamp(2px,.8vw,5px);
+  }
+
+
+  .cover.front h1{
+    margin-top:clamp(18px,4vw,32px);
+
+    padding:0 24px;
+
+    font-size:clamp(25px,7vw,42px);
+
+    line-height:1.12;
+  }
+
+
+  .cover.front h1 span{
+    margin-top:10px;
+
+    font-size:clamp(20px,6vw,36px);
+
+    line-height:1.12;
+  }
+
+
+  .cover.front p{
+    margin-top:18px;
+
+    padding:0 28px;
+
+    font-size:clamp(13px,3.5vw,18px);
+
+    line-height:1.45;
+  }
+
+
+  .cover.front button{
+    margin-top:clamp(22px,5vw,34px);
+
+    width:clamp(175px,52vw,235px);
+
+    height:clamp(48px,12vw,60px);
+
+    font-size:clamp(11px,3vw,14px);
+  }
+
+
+  /* =========================
+     PAGE
+  ========================= */
+
+  .page-front{
+    padding:20px 16px 90px;
+  }
+
+
+  .page-header{
+    margin-top:8px;
+  }
+
+
+  .chapter-num{
+    font-size:clamp(11px,3vw,14px);
+  }
+
+
+  .page-header h2{
+    font-size:clamp(21px,6vw,32px);
+
+    line-height:1.1;
+
+    margin:6px 0 4px;
+  }
+
+
+  .chapter-subtitle{
+    font-size:clamp(16px,4.2vw,21px);
+
+    line-height:1.2;
+  }
+
+
+  .page-meta{
+    margin-top:10px;
+
+    font-size:clamp(10px,2.8vw,13px);
+
+    line-height:1.35;
+  }
+
+
+  .page-meta .dot{
+    margin:0 5px;
+  }
+
+
+  /* =========================
+     IMAGE
+  ========================= */
+
+  .photo-frame{
+    width:100%;
+    max-width:none;
+
+    aspect-ratio:16 / 9;
+
+    height:auto;
+
+    margin:16px auto 0;
+  }
+
+
+  .photo-frame img{
+    display:block;
+
+    width:100%;
+    height:100%;
+
+    /* NO CROP */
+    object-fit:contain;
+  }
+
+
+  /* =========================
+     TEXT
+  ========================= */
+
+  .highlight-number{
+    margin:12px 0 4px;
+
+    font-size:clamp(30px,9vw,52px);
+
+    line-height:1;
+  }
+
+
+  .page-text{
+    width:100%;
+    max-width:100%;
+
+    margin-top:14px;
+  }
+
+
+  .page-text p{
+    font-size:clamp(14px,3.7vw,17px);
+
+    line-height:1.55;
+
+    margin-bottom:12px;
+
+    text-align:left;
+  }
+
+
+  .handwritten-quote{
+    max-width:100%;
+
+    margin:16px auto 0;
+
+    font-size:clamp(19px,5vw,27px);
+
+    line-height:1.25;
+  }
+
+
+  .wax-seal{
+    width:42px;
+    height:42px;
+
+    margin:20px auto 10px;
+  }
+
+
+  /* =========================
+     CONTROLS
+  ========================= */
+
+  .controls{
+    left:0;
+    right:0;
+
+    bottom:6px;
+
+    gap:5px;
+
+    padding:7px 6px;
+
+    flex-wrap:nowrap;
+  }
+
+
+  .nav-btn{
+    padding:8px 10px;
+
+    font-size:clamp(9px,2.5vw,12px);
+
+    letter-spacing:.5px;
+  }
+
+
+  .page-indicator{
+    font-size:11px;
+
+    white-space:nowrap;
+  }
+
 }
 
-@media (max-width: 480px){
-  .book{ width: 94vw; height: 74vh; }
-  .spine{ display:none; }
-  .cover.front .year{ margin-top: 40px; }
-  .page-front{ padding: 16px 14px 36px; }
-  .photo-frame{ max-width:100%; }
-  .controls{ bottom: 8px; gap:8px; }
-  .nav-btn{ padding:8px 12px; }
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width:480px){
+
+  .journey{
+    padding:22px 9px 95px;
+  }
+
+
+  .book{
+  width:94vw;
+  height:calc(94vw * 1.30);
 }
 
-/* Very small phones */
-@media (max-width: 360px){
-  .cover.front h1{ font-size: 22px; }
-  .cover.front h1 span{ font-size: 19px; }
-  .highlight-number{ font-size: 30px; }
+
+  .spine{
+    display:none;
+  }
+
+
+  /* COVER FRAME */
+
+  .gold-frame{
+    inset:28px;
+
+    border-width:2px;
+  }
+
+
+  .cover-border{
+    inset:12px;
+  }
+
+
+  .corner{
+    width:28px;
+    height:28px;
+
+    border-width:2px;
+  }
+
+
+  .tl{
+    top:22px;
+    left:22px;
+  }
+
+
+  .tr{
+    top:22px;
+    right:22px;
+  }
+
+
+  .bl{
+    bottom:22px;
+    left:22px;
+  }
+
+
+  .br{
+    bottom:22px;
+    right:22px;
+  }
+
+
+  /* =========================
+     COVER SPACING
+  ========================= */
+
+  .cover.front .year{
+    margin-top:48px;
+  }
+
+  .cover.front h1{
+    margin-top:24px;
+    padding:0 18px;
+    font-size:clamp(23px,7vw,32px);
+  }
+
+  .cover.front h1 span{
+    margin-top:10px;
+    font-size:clamp(19px,5.8vw,29px);
+  }
+
+  .cover.front p{
+    margin-top:18px;
+    padding:0 20px;
+    font-size:14px;
+    line-height:1.55;
+  }
+
+  .cover.front button{
+    margin-top:28px;
+    width:190px;
+    height:50px;
+  }
+
+
+  /* =========================
+     PAGE
+  ========================= */
+
+  .page-front{
+    padding:20px 16px 90px;
+  }
+
+
+  /* IMAGE */
+
+  .photo-frame{
+    width:100%;
+    max-width:none;
+
+    aspect-ratio:16 / 9;
+
+    height:auto;
+  }
+
+
+  .photo-frame img{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+  }
+
+
+  /* TEXT */
+
+  .page-text p{
+    font-size:14px;
+
+    line-height:1.52;
+
+    margin-bottom:11px;
+  }
+
+
+  /* CONTROLS */
+
+  .controls{
+    bottom:6px;
+  }
+
+
+  .nav-btn{
+    padding:7px 9px;
+
+    font-size:9px;
+  }
+
 }
 
-/* Short-height screens (landscape phones) */
-@media (max-height: 600px){
-  .book{ height: 90vh; }
-  .cover.front .year{ margin-top: 20px; }
-  .cover.front button{ margin-top: 16px; }
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width:360px){
+
+ .book{
+  width:94vw;
+  height:calc(94vw * 1.30);
+}
+
+
+  .cover.front .year{
+    margin-top:48px;
+  }
+
+
+  .cover.front h1{
+    margin-top:22px;
+
+    font-size:21px;
+  }
+
+
+  .cover.front h1 span{
+    font-size:18px;
+  }
+
+
+  .cover.front p{
+    margin-top:18px;
+
+    font-size:13px;
+
+    line-height:1.55;
+  }
+
+
+  .cover.front button{
+    margin-top:28px;
+
+    width:175px;
+
+    height:47px;
+
+    font-size:10px;
+  }
+
+
+  .page-header h2{
+    font-size:20px;
+  }
+
+
+  .chapter-subtitle{
+    font-size:15px;
+  }
+
+
+  .photo-frame{
+    aspect-ratio:16 / 9;
+
+    height:auto;
+  }
+
+
+  .page-text p{
+    font-size:13.5px;
+
+    line-height:1.48;
+  }
+
+
+  .controls{
+    gap:3px;
+  }
+
+
+  .nav-btn{
+    padding:7px 7px;
+
+    font-size:8px;
+  }
+
+}
+
+
+/* =========================================================
+   SHORT DESKTOP SCREENS ONLY
+   Mobile is NOT affected
+========================================================= */
+
+@media (max-height:600px) and (min-width:769px){
+
+  .book{
+    height:90vh;
+  }
+
+
+  .cover.front .year{
+    margin-top:20px;
+  }
+
+
+  .cover.front button{
+    margin-top:16px;
+  }
+
 }

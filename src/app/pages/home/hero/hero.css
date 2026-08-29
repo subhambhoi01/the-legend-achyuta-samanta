@@ -2698,3 +2698,44 @@ backdrop-filter: saturate(200%) blur(80px);
   }
 
 }
+
+/* =========================================================
+   MOBILE CLICK FIX
+========================================================= */
+
+.buttons {
+  position: relative;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+.buttons button,
+.social-icon {
+  position: relative;
+  z-index: 101;
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+.social-follow,
+.social-icons {
+  position: relative;
+  z-index: 102;
+  pointer-events: auto;
+}
+
+.social-icon {
+  cursor: pointer;
+}
+
+/* Decorative elements should never block clicks */
+.mouse-light,
+.grid-overlay,
+.hero-lines,
+.hero-bg,
+.hero-noise,
+.hero-glow,
+.hero-right::before,
+.hero-right::after {
+  pointer-events: none;
+}

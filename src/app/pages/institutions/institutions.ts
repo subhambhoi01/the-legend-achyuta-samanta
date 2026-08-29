@@ -143,68 +143,91 @@ export class Institutions implements AfterViewInit {
     },
   ];
 
-  ngAfterViewInit(): void {
-    // entrance animation for the ecosystem
-    gsap.from('.hub-node', {
-      scale: 0,
+ ngAfterViewInit(): void {
+
+  // =========================================
+  // ENTRANCE ANIMATION — HUB
+  // =========================================
+
+  gsap.fromTo(
+    '.hub-node',
+    {
       opacity: 0,
+    },
+    {
+      opacity: 1,
       duration: 1,
-      ease: 'back.out(1.6)',
+      ease: 'power2.out',
       scrollTrigger: {
         trigger: '.ecosystem',
         start: 'top 75%',
+        once: true,
       },
-    });
+    }
+  );
 
-    gsap.from(
-      this.nodeEls.map((n) => n.nativeElement),
+
+  // =========================================
+  // ENTRANCE ANIMATION — INSTITUTION NODES
+  // =========================================
+
+  this.nodeEls.forEach((n, i) => {
+
+    const el = n.nativeElement;
+
+    gsap.fromTo(
+      el,
       {
-        scale: 0,
         opacity: 0,
+      },
+      {
+        opacity: 1,
         duration: 0.8,
-        stagger: 0.15,
-        ease: 'back.out(1.7)',
-        delay: 0.3,
+        delay: 0.3 + i * 0.15,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: '.ecosystem',
           start: 'top 75%',
+          once: true,
         },
       }
     );
 
-    gsap.from('.energy-line', {
-      strokeDashoffset: 400,
-      duration: 1.4,
-      stagger: 0.15,
-      ease: 'power2.out',
-      delay: 0.2,
-      scrollTrigger: {
-        trigger: '.ecosystem',
-        start: 'top 75%',
-      },
-    });
+  });
 
-    // idle floating for each node
-    this.nodeEls.forEach((n, i) => {
-      gsap.to(n.nativeElement, {
-        y: -10,
-        duration: 2.4 + i * 0.3,
-        ease: 'sine.inOut',
-        repeat: -1,
-        yoyo: true,
-      });
-    });
 
-    // idle hub pulse
-    gsap.to('.hub-glow', {
-      scale: 1.15,
-      opacity: 0.5,
-      duration: 2.2,
-      ease: 'sine.inOut',
-      repeat: -1,
-      yoyo: true,
-    });
-  }
+  // =========================================
+  // ENERGY LINES ANIMATION
+  // =========================================
+
+  gsap.from('.energy-line', {
+    strokeDashoffset: 400,
+    duration: 1.4,
+    stagger: 0.15,
+    ease: 'power2.out',
+    delay: 0.2,
+    scrollTrigger: {
+      trigger: '.ecosystem',
+      start: 'top 75%',
+      once: true,
+    },
+  });
+
+
+  // =========================================
+  // IDLE HUB PULSE
+  // =========================================
+
+  gsap.to('.hub-glow', {
+    scale: 1.15,
+    opacity: 0.5,
+    duration: 2.2,
+    ease: 'sine.inOut',
+    repeat: -1,
+    yoyo: true,
+  });
+
+}
 
   onNodeMouseMove(event: MouseEvent, el: HTMLElement) {
     const rect = el.getBoundingClientRect();
