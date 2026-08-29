@@ -809,9 +809,20 @@ MARQUEE ANIMATION
    ABOUT SECTION — RESPONSIVE
 ========================================================= */
 
+/* =========================================================
+   ABOUT SECTION — FULL RESPONSIVE
+   Works across Android + iPhone + tablets
+========================================================= */
+
+/* ---------- Tablet ---------- */
 @media (max-width: 1024px) {
+
   .about {
     padding: 120px 0 100px;
+  }
+
+  .about .container {
+    width: min(1350px, 92%);
   }
 
   .about-title {
@@ -819,7 +830,7 @@ MARQUEE ANIMATION
   }
 
   .story-card {
-    padding: 30px 30px;
+    padding: 30px;
     min-height: 180px;
     margin-bottom: 70px;
     border-radius: 22px;
@@ -842,7 +853,11 @@ MARQUEE ANIMATION
 
   .photo {
     width: 420px;
-    height: 320px;
+    height: 280px;
+  }
+
+  .gallery-track {
+    gap: 26px;
   }
 
   .gallery-strip::before,
@@ -851,89 +866,283 @@ MARQUEE ANIMATION
   }
 }
 
+
+/* ---------- Mobile ---------- */
 @media (max-width: 768px) {
+
   .about {
     padding: 90px 0 70px;
+    overflow: hidden;
+  }
+
+  .about .container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* ---------- TITLE ---------- */
+
+  .about-title {
+    width: calc(100% - 32px);
+    margin: 0 auto 55px;
+  }
+
+  .about-title > span {
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
   }
 
   .about-title h2 {
+    font-size: clamp(34px, 9vw, 52px);
+    line-height: 1.08;
     letter-spacing: -1px;
+    margin-bottom: 18px;
   }
 
   .about-title p {
+    width: 100%;
+    max-width: 500px;
     font-size: 15px;
+    line-height: 1.7;
   }
 
+
+  /* ---------- STORY CARD ---------- */
+
   .story-card {
-    padding: 26px 20px;
-    min-height: auto;
-    border-radius: 18px;
+    width: calc(100% - 32px);
+    margin: 0 auto 65px;
+
+    min-height: 190px;
+
+    padding: 28px 18px;
+
+    border-radius: 20px;
+
+    box-sizing: border-box;
   }
 
   .story-card::after {
-    font-size: 50px;
-    right: 10px;
+    font-size: clamp(45px, 14vw, 70px);
+    right: 8px;
+    bottom: -5px;
   }
 
-  .story-message h3.story-text {
-    white-space: normal !important;
-    overflow: visible !important;
-    text-overflow: unset !important;
-    line-height: 1.3;
-    flex-wrap: wrap;
-    text-align: center;
+  .story-message {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
-  .story-bottom {
-    position: static;
-    margin-top: 20px;
+  .story-message::before {
+    width: 200px;
+    height: 200px;
+    filter: blur(55px);
+  }
+
+  .story-text {
+    width: 100%;
+    max-width: 100%;
+
+    display: flex;
+
     flex-direction: column;
-    gap: 14px;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    padding: 0;
+
+    font-size: clamp(22px, 6vw, 32px);
+
+    line-height: 1.25;
+
+    text-align: center;
+
+    white-space: normal;
+    overflow: visible;
   }
 
-  .counter {
-    font-size: 12px;
-    letter-spacing: 2px;
+  .story-text span {
+    max-width: 100%;
   }
 
-  .progress span {
-    width: 10px;
-    height: 10px;
-  }
+
+  /* ---------- GALLERY ---------- */
 
   .gallery-strip {
-    padding: 16px 0;
-  }
+    width: 100%;
+    max-width: 100%;
 
-  .photo {
-    width: 300px;
-    height: 2400px;
-    border-radius: 18px;
-  }
+    padding: 18px 0;
 
-  .photo span {
-    font-size: 14px;
-    left: 16px;
-    bottom: 16px;
+    margin-top: 0;
+
+    overflow: hidden;
   }
 
   .gallery-track {
+    display: flex;
+    align-items: center;
+
     gap: 18px;
+
+    width: max-content;
+
+    will-change: transform;
+
+    animation: marquee 35s linear infinite;
+  }
+
+
+  /* ---------- PHOTO CARD ---------- */
+
+  .photo {
+    flex: 0 0 auto;
+
+    /*
+      Responsive width:
+      iPhone SE  -> ~290px
+      Normal     -> ~320px
+      Large phone -> ~350px
+    */
+    width: clamp(280px, 82vw, 360px);
+
+    /*
+      IMPORTANT:
+      Do NOT use a huge fixed height.
+    */
+    height: auto;
+
+    aspect-ratio: 16 / 10;
+
+    min-height: 0;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    position: relative;
+  }
+
+  .photo img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: inherit;
+
+    transform: translateZ(0);
+
+    transition:
+      transform .6s ease,
+      filter .6s ease;
+  }
+
+  .photo span {
+    left: 15px;
+    bottom: 15px;
+
+    max-width: calc(100% - 30px);
+
+    font-size: 14px;
+    line-height: 1.3;
+
+    white-space: normal;
+  }
+
+
+  /* ---------- MOBILE EDGE FADE ---------- */
+
+  .gallery-strip::before,
+  .gallery-strip::after {
+    width: 35px;
+  }
+
+
+  /* ---------- DISABLE HOVER MOVEMENT ON TOUCH ---------- */
+
+  .photo:hover {
+    transform: none;
+  }
+
+  .photo:hover img {
+    transform: none;
+  }
+
+  .photo:hover span {
+    color: #fff;
+  }
+}
+
+
+/* ---------- Small Phones ---------- */
+@media (max-width: 420px) {
+
+  .about {
+    padding-top: 80px;
+  }
+
+  .about-title {
+    width: calc(100% - 28px);
+    margin-bottom: 45px;
+  }
+
+  .about-title h2 {
+    font-size: clamp(32px, 9vw, 42px);
+  }
+
+  .about-title p {
+    font-size: 14px;
+  }
+
+  .story-card {
+    width: calc(100% - 28px);
+
+    min-height: 180px;
+
+    padding: 24px 15px;
+
+    border-radius: 18px;
+
+    margin-bottom: 55px;
+  }
+
+  .story-text {
+    font-size: clamp(21px, 6vw, 27px);
+  }
+
+  .photo {
+    width: 82vw;
+    max-width: 330px;
+
+    aspect-ratio: 16 / 10;
+
+    border-radius: 17px;
+  }
+
+  .photo span {
+    font-size: 13px;
+    left: 14px;
+    bottom: 14px;
+  }
+
+  .gallery-track {
+    gap: 16px;
   }
 
   .gallery-strip::before,
   .gallery-strip::after {
-    width: 50px;
-  }
-}
-
-@media (max-width: 420px) {
-  .story-card {
-    padding: 22px 16px;
-  }
-
-  .photo {
-    width: 240px;
-    height: 190px;
+    width: 25px;
   }
 }
