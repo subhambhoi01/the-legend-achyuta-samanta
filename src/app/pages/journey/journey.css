@@ -229,7 +229,7 @@
 
   -webkit-overflow-scrolling:touch;
   overscroll-behavior:contain;
-  touch-action:pan-y;
+  touch-action:auto;
 
   scrollbar-width:thin;
 
@@ -431,14 +431,29 @@
 /* ============ CONTROLS ============ */
 .controls{
   position:absolute;
-  bottom: 14px;
-  left:0; right:0;
-  display:flex; align-items:center; justify-content:center;
-  gap: clamp(8px, 2vw, 20px);
+  bottom:14px;
+  left:0;
+  right:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:clamp(8px, 2vw, 20px);
   flex-wrap:wrap;
-  padding: 8px 10px;
-  z-index: 200;
-  background: linear-gradient(to top, rgba(20,10,3,.85), transparent);
+
+  padding:8px 10px;
+
+  z-index:500;
+
+  background:linear-gradient(
+    to top,
+    rgba(20,10,3,.85),
+    transparent
+  );
+
+  pointer-events:auto;
+  touch-action:manipulation;
 }
 .nav-btn{
   background:transparent; border:1px solid rgba(212,175,55,.5); color:#e8c553;
@@ -503,25 +518,36 @@
     -webkit-overflow-scrolling:touch;
   }
 
+  .controls{
+    position:absolute;
+    z-index:1000;
+    pointer-events:auto;
+    touch-action:manipulation;
+  }
 
+  .nav-btn{
+    position:relative;
+    z-index:1001;
+    pointer-events:auto;
+    touch-action:manipulation;
+  }
   /* BOOK */
 
-  .book{
-    width:min(94vw,600px);
-
-    /*
-      Mobile book height
-      slightly taller than width
-    */
-    height:calc(min(94vw,600px) * 1.48);
-
+    .book{
+    width:94vw;
+    height:135vw;
+    max-width:600px;
     max-height:none;
     flex-shrink:0;
-
     perspective:2200px;
   }
 
-
+  .page{
+    transform-style:preserve-3d;
+    transform-origin:left center;
+    will-change:transform;
+    backface-visibility:visible;
+  }
   /* =========================
      COVER
   ========================= */
@@ -757,9 +783,11 @@
 
 
   .book{
-  width:94vw;
-  height:calc(94vw * 1.30);
-}
+    width:94vw;
+    height:122vw;
+    max-width:none;
+    max-height:none;
+  }
 
 
   .spine{
@@ -910,9 +938,8 @@
 
  .book{
   width:94vw;
-  height:calc(94vw * 1.30);
-}
-
+  height:122vw;
+ }
 
   .cover.front .year{
     margin-top:48px;

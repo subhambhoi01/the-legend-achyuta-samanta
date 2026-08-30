@@ -274,15 +274,34 @@ openBook() {
 
 }
   // ---------- PAGE TURNING ----------
-  nextPage() {
-    const idx = this.currentPage();
-    if (idx >= this.totalPages) return;
+nextPage() {
+  const idx = this.currentPage();
 
-    const pageEl = this.pageEls.toArray()[idx]?.nativeElement;
-    if (!pageEl) return;
+  if (idx >= this.totalPages) return;
 
-    this.spawnGoldBurst();
-    this.playPaperSound();
+  const pageEl = this.pageEls.toArray()[idx]?.nativeElement;
+  if (!pageEl) return;
+
+  this.spawnGoldBurst();
+  this.playPaperSound();
+
+  const isMobile = window.innerWidth <= 768;
+
+  if (isMobile) {
+
+    pageEl.style.zIndex = `${this.totalPages + 20}`;
+
+    gsap.to(pageEl, {
+      rotateY: -180,
+      duration: 0.75,
+      ease: 'power2.inOut',
+      transformOrigin: 'left center',
+      onComplete: () => {
+        pageEl.style.zIndex = `${idx}`;
+      }
+    });
+
+  } else {
 
     gsap.to(pageEl, {
       rotateY: -175,
@@ -297,39 +316,46 @@ openBook() {
       },
     });
 
-    this.currentPage.set(idx + 1);
+  }
 
-    if (idx + 1 === this.totalPages) {
-      setTimeout(() => this.showBackCover.set(true), 900);
+  this.currentPage.set(idx + 1);
+
+  if (idx + 1 === this.totalPages) {
+    setTimeout(() => {
+      this.showBackCover.set(true);
+    }, isMobile ? 650 : 900);
+  }
+}
+ prevPage() {
+  const idx = this.currentPage();
+
+  if (idx <= 0) return;
+
+  this.showBackCover.set(false);
+
+  const pageEl = this.pageEls.toArray()[idx - 1]?.nativeElement;
+  if (!pageEl) return;
+
+  this.spawnGoldBurst();
+  this.playPaperSound();
+
+  const isMobile = window.innerWidth <= 768;
+
+  pageEl.style.zIndex = `${this.totalPages + 20}`;
+
+  gsap.to(pageEl, {
+    rotateY: 0,
+    duration: isMobile ? 0.75 : 1.1,
+    ease: 'power2.inOut',
+    transformOrigin: 'left center',
+
+    onComplete: () => {
+      pageEl.style.zIndex = `${this.totalPages - idx}`;
     }
-  }
+  });
 
-  prevPage() {
-    const idx = this.currentPage();
-    if (idx <= 0) return;
-
-    this.showBackCover.set(false);
-    const pageEl = this.pageEls.toArray()[idx - 1]?.nativeElement;
-    if (!pageEl) return;
-
-    this.spawnGoldBurst();
-    this.playPaperSound();
-
-    gsap.to(pageEl, {
-      rotateY: 0,
-      duration: 1.1,
-      ease: 'power2.inOut',
-      transformOrigin: 'left center',
-      onStart: () => {
-        pageEl.style.zIndex = `${this.totalPages + 10}`;
-      },
-      onComplete: () => {
-        pageEl.style.zIndex = `${this.totalPages - idx}`;
-      },
-    });
-
-    this.currentPage.set(idx - 1);
-  }
+  this.currentPage.set(idx - 1);
+}
 
  closeBook() {
   const tl = gsap.timeline();
