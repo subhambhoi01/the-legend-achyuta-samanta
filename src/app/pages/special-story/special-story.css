@@ -365,6 +365,13 @@
     border-radius:0;
     width:100%;
   }
+  .close-btn{
+  top: 58px;
+  right: 14px;
+  width: 42px;
+  height: 42px;
+  z-index: 2000;
+}
 }
 
 @media (max-width: 480px){
