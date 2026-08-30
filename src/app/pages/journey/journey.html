@@ -43,10 +43,7 @@
     <!-- PAGES -->
     <div class="pages-wrap" #pagesWrap [class.visible]="isOpened()">
 
-      <div class="page"
-           *ngFor="let chapter of chapters; let i = index"
-           #pageEl
-           [style.zIndex]="totalPages - i">
+     <div class="page" *ngFor="let chapter of chapters; let i = index" #pageEl>
 
         <!-- FRONT SIDE OF PAGE (chapter content) -->
         <div class="page-face page-front">
@@ -114,9 +111,11 @@
 
       <!-- CONTROLS -->
       <div class="controls" *ngIf="isOpened()">
-        <button class="nav-btn prev" (click)="prevPage()" [disabled]="currentPage() === 0">‹ Previous</button>
+        <button class="nav-btn prev" (click)="prevPage()"
+  [disabled]="currentPage() === 0 || (bookState() !== 'OPENED_IDLE' && bookState() !== 'LAST_PAGE')">‹ Previous</button>
         <span class="page-indicator">{{ currentPage() }} / {{ totalPages }}</span>
-        <button class="nav-btn next" (click)="nextPage()" [disabled]="currentPage() === totalPages">Next ›</button>
+       <button class="nav-btn next" (click)="nextPage()"
+  [disabled]="currentPage() === totalPages || bookState() !== 'OPENED_IDLE'">Next ›</button>
         <button class="nav-btn close" (click)="closeBook()">Close Book</button>
       </div>
 

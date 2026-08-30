@@ -216,6 +216,10 @@
   transform-style:preserve-3d;
   transform-origin:left center;
 }
+.page.animating{ will-change:transform; }
+.page.turned .page-front{ pointer-events:none; }
+.page-back{ pointer-events:none; }
+.page.page-far{ visibility:hidden; pointer-events:none; }
 
 .page-face{
   position:absolute;
@@ -229,7 +233,7 @@
 
   -webkit-overflow-scrolling:touch;
   overscroll-behavior:contain;
-  touch-action:auto;
+ touch-action:pan-y;
 
   scrollbar-width:thin;
 
@@ -542,12 +546,7 @@
     perspective:2200px;
   }
 
-  .page{
-    transform-style:preserve-3d;
-    transform-origin:left center;
-    will-change:transform;
-    backface-visibility:visible;
-  }
+  .particles span:nth-child(n+16){ display:none; }
   /* =========================
      COVER
   ========================= */
